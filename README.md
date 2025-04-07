@@ -1,59 +1,36 @@
-<h1 align="center">Boilerplate Repository <br> Future Projects 🚀 </h1>
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<div align="center" id="badges">
-<br/>
-<a href="">
-	<img src="https://img.shields.io/badge/documentation-docs-orange" alt="Documentation"/>
-</a>
-<a href="">
-    <img src="https://img.shields.io/badge/Web-live%20site-blue" alt=""/>
-</a>
- <a href="https://github.com/vikiru/boilerplate/blob/main/LICENSE">
-  <img src="https://img.shields.io/badge/license-MIT-aqua" alt="MIT License Badge"/>
- </a>
- <a href="https://github.com/prettier/prettier">
-  <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Code Style - Prettier"/>
- </a>
-<br/>
-  <a href="https://github.com/vikiru/boilerplate/releases">
-  <img src="https://img.shields.io/github/v/release/vikiru/boilerplate" alt="Release"/>
- </a>
- <a href="https://github.com/vikiru/boilerplate/issues?q=is%3Aissue+is%3Aclosed">
-  <img src="https://img.shields.io/github/issues-closed/vikiru/boilerplate" alt="Closed Issues"/>
- </a>
- <a href="https://github.com/vikiru/boilerplate/pulls?q=is%3Apr+is%3Aclosed">
-  <img src="https://img.shields.io/github/issues-pr-closed/vikiru/boilerplate?label=closed%20prs" alt="Closed PRs"/>
- </a>
-</div>
+## Getting Started
 
----
+First, run the development server:
 
-This repository is a boilerplate repository for future GitHub projects.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## 📖 Table of Contents
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [📖 Table of Contents](#-table-of-contents)
-- [🌟 Features](#-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📝 Prerequisites](#-prerequisites)
-- [⚡ Setup Instructions](#-setup-instructions)
-- [🔍 Testing](#-testing)
-- [📜 Available Scripts](#-available-scripts)
-- [✨ Acknowledgments](#-acknowledgments)
-- [©️ License](#️-license)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 🌟 Features
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🛠️ Tech Stack
+## Learn More
 
-## 📝 Prerequisites
+To learn more about Next.js, take a look at the following resources:
 
-## ⚡ Setup Instructions
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 🔍 Testing
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 📜 Available Scripts
+## Deploy on Vercel
 
-## ✨ Acknowledgments
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## ©️ License
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
