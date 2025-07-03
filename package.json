@@ -38,7 +38,8 @@
         "lucide-react": "^0.487.0",
         "next": "15.2.4",
         "react": "^19.1.0",
-        "react-dom": "^19.1.0"
+        "react-dom": "^19.1.0",
+        "zod": "^3.25.69"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.8.0",
@@ -61,7 +62,7 @@
         "prettier-plugin-tailwindcss": "^0.6.11",
         "semantic-release": "^24.2.3",
         "tailwindcss": "^4",
-        "typescript": "^5"
+        "typescript": "^5.8.3"
     },
     "lint-staged": {
         "*.{js,mjs,cjs,ts,jsx,tsx}": [
