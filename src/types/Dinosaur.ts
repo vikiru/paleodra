@@ -1,8 +1,8 @@
-import { ClassificationInfo } from '@/types/ClassificationInfo';
-import { DinosaurImage } from '@/types/DinosaurImage';
-import { DinosaurSource } from '@/types/DinosaurSource';
-import { Diet } from '@/types/Diet';
-import { Locomotion } from '@/types/Locomotion';
+import type { ClassificationInfo } from '@/types/ClassificationInfo';
+import type { Diet } from '@/types/Diet';
+import type { DinosaurImage } from '@/types/DinosaurImage';
+import type { DinosaurSource } from '@/types/DinosaurSource';
+import type { Locomotion } from '@/types/Locomotion';
 
 export type Dinosaur = {
     name: string;

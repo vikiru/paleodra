@@ -1,9 +1,9 @@
-import {
+import type {
     ClassInfo,
     FamilyInfo,
     GenusInfo,
-    SpeciesInfo,
     OrderInfo,
+    SpeciesInfo,
 } from '@/types/Info';
 
 export type ClassificationInfo = {
