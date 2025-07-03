@@ -67,6 +67,5 @@
         "enabled": true,
         "rules": { "recommended": true }
     },
-    "overrides": [{ "includes": ["*.ts", "*.tsx"] }],
-    "vcs": { "clientKind": "git", "enabled": false, "useIgnoreFile": true }
+    "vcs": { "clientKind": "git", "enabled": true, "useIgnoreFile": true }
 }
