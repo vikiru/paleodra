@@ -58,17 +58,5 @@
         "semantic-release": "^24.2.3",
         "tailwindcss": "^4",
         "typescript": "^5.8.3"
-    },
-    "release": {
-        "branches": [
-            "main"
-        ],
-        "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
-            "@semantic-release/npm",
-            "@semantic-release/git",
-            "@semantic-release/github"
-        ]
     }
 }
