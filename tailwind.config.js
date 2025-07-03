@@ -6,9 +6,9 @@ module.exports = {
     content: [
         './node_modules/@heroui/theme/dist/components/(autocomplete|badge|breadcrumbs|button|card|chip|divider|input|navbar|pagination|select|spinner|toggle|tabs|popover|ripple|form|listbox|scroll-shadow).js',
     ],
+    darkMode: 'class',
+    plugins: [heroui()],
     theme: {
         extend: {},
     },
-    darkMode: 'class',
-    plugins: [heroui()],
 };
