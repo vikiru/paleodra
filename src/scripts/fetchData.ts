@@ -66,8 +66,12 @@ async function fetchData(): Promise<Dinosaur[]> {
 }
 
 async function main() {
+    console.log('Fetching dinosaur data from API...');
     const dinos = await fetchData();
+    console.log('Finished fetching dinosaur data from API.');
+    console.log('Writing data to file...');
     await writeData(dinos);
+    console.log('Finished writing data to file.');
 }
 main();
 // TODO: cleanup script, use logger. Improve error handling.
