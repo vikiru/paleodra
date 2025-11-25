@@ -4,7 +4,7 @@ import { API_URL } from '@/config';
 import type { Dinosaur } from '@/types/Dinosaur';
 
 const FILEPATH = path.resolve(process.cwd(), './src/data/dinos.json');
-const DELAY = 30000;
+const DELAY_MS = 30000;
 const MAX_PAGE = 23;
 
 async function pingApi() {
@@ -15,7 +15,7 @@ async function pingApi() {
         );
         setTimeout(() => {
             console.log('Finished waiting 30 seconds. Retrying now.');
-        }, DELAY);
+        }, DELAY_MS);
     } else {
         console.log('Successfully pinged API, it is up and running. ');
     }
@@ -68,9 +68,11 @@ async function fetchData(): Promise<Dinosaur[]> {
 async function main() {
     console.log('Fetching dinosaur data from API...');
     const dinos = await fetchData();
+    const uniqueDinos = Array.from(new Map(dinos.map(dino => [dino.id, dino])).values());
+    const sortedDinos = uniqueDinos.sort((a, b) => a.id - b.id);
     console.log('Finished fetching dinosaur data from API.');
     console.log('Writing data to file...');
-    await writeData(dinos);
+    await writeData(sortedDinos);
     console.log('Finished writing data to file.');
 }
 main();
