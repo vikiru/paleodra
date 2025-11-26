@@ -55,7 +55,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-6">
         <p className="text-center text-sm text-muted-foreground">
           © {currentYear} Paleodra. All dinosaur info and images are sourced
-          directly from Wikipedia Articles. All dinosaur text is available under
+          directly from Wikipedia Articles and belong to their respective authors. All dinosaur text is available under
           the{' '}
           <a
             className="hover:underline transition-all"
