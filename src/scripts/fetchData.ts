@@ -1,80 +1,40 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { API_URL } from '@/config';
-import type { Dinosaur } from '@/types/Dinosaur';
-
-const FILEPATH = path.resolve(process.cwd(), './src/data/dinos.json');
-const DELAY_MS = 30000;
-const MAX_PAGE = 23;
-
-async function pingApi() {
-    const response = await fetch(`${API_URL}/dinosaurs/?page=1`);
-    if (!response) {
-        console.error(
-            'Failed to fetch data from URL, waiting 30 seconds for Render to start.',
-        );
-        setTimeout(() => {
-            console.log('Finished waiting 30 seconds. Retrying now.');
-        }, DELAY_MS);
-    } else {
-        console.log('Successfully pinged API, it is up and running. ');
-    }
-    return response;
-}
-
-async function writeData(data: Dinosaur[]) {
-    try {
-        const dir = path.dirname(FILEPATH);
-        await fs.promises.mkdir(dir, { recursive: true });
-        await fs.promises.writeFile(FILEPATH, JSON.stringify(data, null, 2));
-        console.log(`Successfully written data to ${FILEPATH}.`);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function fetchData(): Promise<Dinosaur[]> {
-    try {
-        let pageCount = 0;
-        const dinos: Dinosaur[] = [];
-        const initialPingResponse = await pingApi();
-        if (initialPingResponse.ok) {
-            pageCount++;
-            const responseData = await initialPingResponse.json();
-            dinos.push(...responseData.data);
-        }
-        while (pageCount <= MAX_PAGE) {
-            console.log(`Fetching page ${pageCount} from API.`);
-            const response = await fetch(
-                `${API_URL}/dinosaurs/?page=${pageCount}`,
-            );
-            if (response.ok) {
-                console.log(`Successfully fetched page ${pageCount} from API.`);
-                pageCount++;
-                const responseData = await response.json();
-                dinos.push(...responseData.data);
-            } else {
-                console.error(`Failed to fetch page ${pageCount} from API.`);
-                break;
-            }
-        }
-        return dinos;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-}
+import { fetchData } from "@/lib/utils/fetchData";
+import { checkFileExists, readFile } from "@/lib/utils/readFile";
+import { writeData } from "@/lib/utils/writeData";
+import type { Dinosaur } from "@/types/Dinosaur";
+import type { SearchIndex } from "@/types/SearchIndex";
+import { createSearchIndex, searchQuery } from "@/lib/utils/flexSearch";
 
 async function main() {
-    console.log('Fetching dinosaur data from API...');
-    const dinos = await fetchData();
-    const uniqueDinos = Array.from(new Map(dinos.map(dino => [dino.id, dino])).values());
-    const sortedDinos = uniqueDinos.sort((a, b) => a.id - b.id);
-    console.log('Finished fetching dinosaur data from API.');
-    console.log('Writing data to file...');
-    await writeData(sortedDinos);
-    console.log('Finished writing data to file.');
+	const filesExist = await Promise.all([
+		checkFileExists('dinosaurs.json'),
+		checkFileExists('searchIndex.json'),
+	]);
+    if (filesExist[0] && filesExist[1]) {
+        console.log("The data files already exist. Skipping fetch of data.");
+	 	return;
+	}
+
+	console.log("Fetching dinosaur data from API...");
+	const dinos = await fetchData();
+	console.log("Finished fetching dinosaur data from API.");
+	
+	const sortedDinos: Dinosaur[] = dinos.sort((a, b) => a.id - b.id);
+
+	const searchIndex: SearchIndex[] = [];
+	sortedDinos.forEach((dino) => {
+		searchIndex.push({
+			id: dino.id,
+			name: dino.name,
+		});
+	});
+
+	console.log("Writing data to file...");
+	await writeData<Dinosaur[]>(sortedDinos, "dinosaurs.json");
+	await writeData<SearchIndex[]>(
+		searchIndex,
+		"searchIndex.json",
+	);
+	console.log("Finished writing data to files.");
 }
 main();
-// TODO: cleanup script, use logger. Improve error handling.
-// TODO: split to util fns
