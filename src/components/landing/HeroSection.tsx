@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export default function HeroSection() {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-background py-20" id="hero">
+    <section className="flex min-h-screen items-center justify-center bg-background py-20">
       <div className="container px-4 text-center">
         <h1 className="mb-6 font-heading text-5xl font-bold leading-tight text-foreground text-balance sm:text-6xl md:text-7xl lg:text-8xl">
           Discover the <span className="logo gradient">Prehistoric World</span>
@@ -15,7 +15,7 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col items-center justify-center">
-          <Button asChild size={"xl"}>
+          <Button asChild size={'xl'}>
             <Link className="text-base" href="/explore">
               Explore Dinosaurs
             </Link>
