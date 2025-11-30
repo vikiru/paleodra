@@ -84,10 +84,7 @@ export function DinoDexContent() {
                 {totalSeenCount} of {dinosaursData.length} dinosaurs discovered
               </span>
             </div>
-            <Progress
-              className="h-2 bg-green-500"
-              value={progressPercentage}
-            />
+            <Progress className="h-2 bg-green-500" value={progressPercentage} />
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -109,7 +106,8 @@ export function DinoDexContent() {
           <div className="mb-6">
             {filteredDinosaurs.length > 0 ? (
               <p className="text-sm text-muted-foreground">
-                Found {filteredDinosaurs.length} dinosaur{filteredDinosaurs.length !== 1 ? 's' : ''}
+                Found {filteredDinosaurs.length} dinosaur
+                {filteredDinosaurs.length !== 1 ? 's' : ''}
               </p>
             ) : (
               <EmptyResults message="No dinosaurs match your search and filter criteria" />

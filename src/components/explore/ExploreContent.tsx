@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react';
 import dinosaurs from '@/data/dinosaurs.json';
 import type { Dinosaur } from '@/types/Dinosaur';
+import { PaginatedDinoGrid } from '../dinodex/PaginatedDinoGrid';
 import { FilterPanel } from '../search/FilterPanel';
 import { SearchBar } from '../search/SearchBar';
-import { PaginatedDinoGrid } from '../dinodex/PaginatedDinoGrid';
 
 const dinosaursData = dinosaurs as unknown as Dinosaur[];
 
@@ -35,7 +35,8 @@ export function ExploreContent({ searchParams }: ExploreContentProps) {
     });
   }, [searchQuery, diet, locomotion]);
 
-  const hasActiveFilters = searchQuery || diet !== 'all' || locomotion !== 'all';
+  const hasActiveFilters =
+    searchQuery || diet !== 'all' || locomotion !== 'all';
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
@@ -65,7 +66,8 @@ export function ExploreContent({ searchParams }: ExploreContentProps) {
           {hasActiveFilters && (
             <div className="mb-6">
               <p className="text-sm text-muted-foreground">
-                Found {filteredDinosaurs.length} dinosaur{filteredDinosaurs.length !== 1 ? 's' : ''}
+                Found {filteredDinosaurs.length} dinosaur
+                {filteredDinosaurs.length !== 1 ? 's' : ''}
               </p>
             </div>
           )}
