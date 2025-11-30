@@ -5,13 +5,13 @@ import type { DinosaurSource } from '@/types/DinosaurSource';
 import type { Locomotion } from '@/types/Locomotion';
 
 export type Dinosaur = {
-    id: number;
-    name: string;
-    temporalRange: string;
-    diet: Diet;
-    classificationInfo: ClassificationInfo;
-    locomotionType: Locomotion;
-    description: string;
-    image: DinosaurImage;
-    source: DinosaurSource;
+  id: number;
+  name: string;
+  temporalRange: string;
+  diet: Diet;
+  classificationInfo: ClassificationInfo;
+  locomotionType: Locomotion;
+  description: string;
+  image: DinosaurImage;
+  source: DinosaurSource;
 };
