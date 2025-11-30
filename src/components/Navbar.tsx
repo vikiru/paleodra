@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  BookOpen,
-  Home,
-  Menu,
-  Search,
-  X,
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -42,10 +36,9 @@ export function Navbar() {
           <nav className="hidden items-center space-x-8 sm:flex">
             {navItems.map((item) => (
               <Link
-                className={`flex items-center space-x-1.5 font-medium transition-colors hover:underline ${pathname === item.href
-                  ? 'gradient'
-                  : 'text-muted-foreground'
-                  }`}
+                className={`flex items-center space-x-1.5 font-medium transition-colors hover:underline ${
+                  pathname === item.href ? 'gradient' : 'text-muted-foreground'
+                }`}
                 href={item.href}
                 key={item.href}
               >
@@ -77,10 +70,11 @@ export function Navbar() {
             <div className="flex flex-col space-y-2 pt-2">
               {navItems.map((item) => (
                 <Link
-                  className={`flex items-center space-x-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:underline ${pathname === item.href
-                    ? 'gradient'
-                    : 'text-muted-foreground'
-                    }`}
+                  className={`flex items-center space-x-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:underline ${
+                    pathname === item.href
+                      ? 'gradient'
+                      : 'text-muted-foreground'
+                  }`}
                   href={item.href}
                   key={item.href}
                   onClick={() => setIsOpen(false)}

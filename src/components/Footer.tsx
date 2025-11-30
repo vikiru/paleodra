@@ -1,19 +1,19 @@
-import { Separator } from '@/components/ui/separator';
-import { Logo } from '@/components/layout/Logo';
 import Link from 'next/link';
+import { Logo } from '@/components/layout/Logo';
+import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="mt-20 border-t border-border/60">
-
       <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
           <div className="flex flex-col space-y-3">
             <Logo />
             <p className="text-muted-foreground">
-              Your gateway to the prehistoric world. Discover, learn, and explore the fascinating age of dinosaurs.
+              Your gateway to the prehistoric world. Discover, learn, and
+              explore the fascinating age of dinosaurs.
             </p>
           </div>
 
@@ -22,22 +22,36 @@ export function Footer() {
               <div>
                 <h4 className="font-semibold text-foreground mb-2">Explore</h4>
                 <div className="space-y-2 flex flex-col items-start">
-                  <Link href="/explore" className="text-muted-foreground hover:text-primary hover:underline transition-colors">
+                  <Link
+                    className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+                    href="/explore"
+                  >
                     All Dinosaurs
                   </Link>
-                  <Link href="/dino-dex" className="text-muted-foreground hover:text-primary hover:underline transition-colors">
+                  <Link
+                    className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+                    href="/dino-dex"
+                  >
                     DinoDex
                   </Link>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-foreground mb-2">Read More</h4>
+                <h4 className="font-semibold text-foreground mb-2">
+                  Read More
+                </h4>
                 <div className="space-y-2 flex flex-col items-start">
-                  <a href="https://github.com/vikiru/paleodra" className="text-muted-foreground hover:text-primary hover:underline transition-colors">
+                  <a
+                    className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+                    href="https://github.com/vikiru/paleodra"
+                  >
                     GitHub
                   </a>
-                  <a href="https://vikiru.github.io/restausaurus" className="text-muted-foreground hover:text-primary hover:underline transition-colors">
+                  <a
+                    className="text-muted-foreground hover:text-primary hover:underline transition-colors"
+                    href="https://vikiru.github.io/restausaurus"
+                  >
                     API Documentation
                   </a>
                 </div>
@@ -45,9 +59,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-
-          </div>
+          <div></div>
         </div>
       </div>
 
@@ -55,8 +67,8 @@ export function Footer() {
       <div className="container mx-auto px-4 py-6">
         <p className="text-center text-sm text-muted-foreground">
           © {currentYear} Paleodra. All dinosaur info and images are sourced
-          directly from Wikipedia Articles and belong to their respective authors. All dinosaur text is available under
-          the{' '}
+          directly from Wikipedia Articles and belong to their respective
+          authors. All dinosaur text is available under the{' '}
           <a
             className="hover:underline transition-all"
             href="https://creativecommons.org/licenses/by-sa/4.0/"

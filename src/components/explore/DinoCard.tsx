@@ -56,11 +56,17 @@ const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
           </span>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
-          <Badge className="capitalize" variant={isUndiscovered ? "outline" : "default"}>
+          <Badge
+            className="capitalize"
+            variant={isUndiscovered ? 'outline' : 'default'}
+          >
             <Utensils className="mr-1.5 h-3 w-3" />
             {isUndiscovered ? 'Unknown' : dino.diet}
           </Badge>
-          <Badge className="capitalize" variant={isUndiscovered ? "outline" : "secondary"}>
+          <Badge
+            className="capitalize"
+            variant={isUndiscovered ? 'outline' : 'secondary'}
+          >
             <Footprints className="mr-1.5 h-3 w-3" />
             {isUndiscovered ? 'Unknown' : dino.locomotionType}
           </Badge>
