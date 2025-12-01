@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
 import { EmptyResults } from '@/components/search/EmptyResults';
 import { FilterPanel } from '@/components/search/FilterPanel';
@@ -11,8 +12,6 @@ import { useDiscoveryTracking } from '@/hooks/useDiscoveryTracking';
 export function DinoDexContent() {
   const {
     filteredDinosaurs,
-    discoveredCount,
-    undiscoveredCount,
     hasActiveFilters,
     filterState,
     setSearchQuery,
@@ -22,6 +21,12 @@ export function DinoDexContent() {
 
   const { totalSeenCount, totalCount, progressPercentage } =
     useDiscoveryTracking();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
@@ -37,13 +42,15 @@ export function DinoDexContent() {
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-green-500" />
               <span className="text-muted-foreground">
-                {totalSeenCount} Discovered
+                {isMounted ? `${totalSeenCount} Discovered` : 'Loading...'}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-gray-400" />
               <span className="text-muted-foreground">
-                {totalCount - totalSeenCount} Undiscovered
+                {isMounted
+                  ? `${totalCount - totalSeenCount} Undiscovered`
+                  : 'Loading...'}
               </span>
             </div>
           </div>
@@ -54,10 +61,15 @@ export function DinoDexContent() {
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Discovery Progress</span>
               <span className="text-muted-foreground">
-                {totalSeenCount} of {totalCount} dinosaurs discovered
+                {isMounted
+                  ? `${totalSeenCount} of ${totalCount} dinosaurs discovered`
+                  : 'Loading...'}
               </span>
             </div>
-            <Progress className="h-2 bg-green-500" value={progressPercentage} />
+            <Progress
+              className="h-2 bg-green-500"
+              value={isMounted ? progressPercentage : 0}
+            />
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

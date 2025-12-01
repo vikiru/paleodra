@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react';
+import { memo } from 'react';
 
 type EmptyResultsProps = {
   message?: string;
@@ -21,3 +22,5 @@ export function EmptyResults({
     </div>
   );
 }
+
+export default memo(EmptyResults);

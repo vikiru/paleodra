@@ -6,6 +6,7 @@ import { DinoDetails } from '@/components/dino-details/DinoDetails';
 import { HeaderSection } from '@/components/dino-details/HeaderSection';
 import { ImageSection } from '@/components/dino-details/ImageSection';
 import { SourceSection } from '@/components/dino-details/SourceSection';
+import { Button } from '@/components/ui/button';
 import type { ClassificationInfo } from '@/types/ClassificationInfo';
 import type { Diet } from '@/types/Diet';
 import type { Locomotion } from '@/types/Locomotion';
@@ -36,12 +37,9 @@ export default async function DinoPage({ params }: { params: { id: string } }) {
       <div className="min-h-screen bg-background">
         <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
           <div className="w-full">
-            <Link
-              className="mb-8 inline-flex items-center text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200"
-              href="/dino-dex"
-            >
-              ← Back to DinoDex
-            </Link>
+            <Button asChild className="mb-8" variant="ghost">
+              <Link href="/dino-dex">← Back to DinoDex</Link>
+            </Button>
           </div>
 
           <HeaderSection
