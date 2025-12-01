@@ -19,7 +19,7 @@ export function DinoDexContent() {
     setLocomotion,
   } = useDinoDexFilters();
 
-  const { totalSeenCount, totalCount, progressPercentage } =
+  const { discoveredCount, undiscoveredCount, totalCount, progressPercentage } =
     useDiscoveryTracking();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -42,15 +42,13 @@ export function DinoDexContent() {
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-green-500" />
               <span className="text-muted-foreground">
-                {isMounted ? `${totalSeenCount} Discovered` : 'Loading...'}
+                {isMounted ? `${discoveredCount} Discovered` : 'Loading...'}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-3 w-3 rounded-full bg-gray-400" />
               <span className="text-muted-foreground">
-                {isMounted
-                  ? `${totalCount - totalSeenCount} Undiscovered`
-                  : 'Loading...'}
+                {isMounted ? `${undiscoveredCount} Undiscovered` : 'Loading...'}
               </span>
             </div>
           </div>
@@ -62,12 +60,12 @@ export function DinoDexContent() {
               <span className="text-muted-foreground">Discovery Progress</span>
               <span className="text-muted-foreground">
                 {isMounted
-                  ? `${totalSeenCount} of ${totalCount} dinosaurs discovered`
+                  ? `${discoveredCount} of ${totalCount} dinosaurs discovered`
                   : 'Loading...'}
               </span>
             </div>
             <Progress
-              className="h-2 bg-green-500"
+              className="h-2"
               value={isMounted ? progressPercentage : 0}
             />
           </div>

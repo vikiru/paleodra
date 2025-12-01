@@ -18,15 +18,14 @@ type UseDiscoveryTrackingReturn = {
 export function useDiscoveryTracking(): UseDiscoveryTrackingReturn {
   const { seenIds, getAllSeenIds, markAsSeen } = useDinoStore();
 
-  const totalSeenCount = getAllSeenIds().length;
   const totalCount = dinosaursData.length;
-  const progressPercentage = (totalSeenCount / totalCount) * 100;
-
   const discoveredCount = useMemo(() => {
     return dinosaursData.filter((dino) => seenIds.has(dino.id)).length;
   }, [seenIds]);
 
   const undiscoveredCount = totalCount - discoveredCount;
+  const progressPercentage =
+    totalCount > 0 ? (discoveredCount / totalCount) * 100 : 0;
 
   const isDiscovered = (id: number): boolean => {
     return seenIds.has(id);
@@ -37,7 +36,7 @@ export function useDiscoveryTracking(): UseDiscoveryTrackingReturn {
   };
 
   return {
-    totalSeenCount,
+    totalSeenCount: discoveredCount,
     totalCount,
     progressPercentage,
     discoveredCount,

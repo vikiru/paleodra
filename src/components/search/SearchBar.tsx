@@ -1,8 +1,7 @@
 'use client';
 
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { memo } from 'react';
-import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { useSearchSuggestions } from '@/hooks/useSearchSuggestions';
 import type { SearchIndex } from '@/types/SearchIndex';
@@ -50,13 +49,12 @@ export function SearchBar({
         value={value}
       />
       {value && onChange && (
-        <Badge
-          className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer hover:bg-muted-foreground/20"
+        <button
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md hover:bg-muted-foreground/20 transition-colors"
           onClick={() => onChange('')}
-          variant="secondary"
         >
-          Clear
-        </Badge>
+          <X className="h-4 w-4 text-muted-foreground" />
+        </button>
       )}
       {showSuggestions && showLocalSuggestions && suggestions.length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-1 bg-background border border-border rounded-md shadow-lg z-50 max-h-48 overflow-y-auto">
