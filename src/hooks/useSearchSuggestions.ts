@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
-import { useStaticSearch } from './useStaticSearch';
+import { useStaticSearch } from '@/hooks/useStaticSearch';
+import type { SearchIndex } from '@/types/SearchIndex';
 
 type UseSearchSuggestionsReturn = {
-  suggestions: Array<{ id: number; name: string }>;
+  suggestions: Array<SearchIndex>;
   showSuggestions: boolean;
   query: string;
   setQuery: (query: string) => void;
