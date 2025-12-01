@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import {
   Select,
   SelectContent,
@@ -64,3 +65,5 @@ export function FilterPanel({
     </div>
   );
 }
+
+export default memo(FilterPanel);

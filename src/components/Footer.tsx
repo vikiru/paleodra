@@ -50,7 +50,7 @@ export function Footer() {
                   </a>
                   <a
                     className="text-muted-foreground hover:text-primary hover:underline transition-colors"
-                    href="https://vikiru.github.io/restausaurus"
+                    href="https://vikiru.github.io/restausaurus/"
                   >
                     API Documentation
                   </a>
@@ -70,7 +70,7 @@ export function Footer() {
           directly from Wikipedia Articles and belong to their respective
           authors. All dinosaur text is available under the{' '}
           <a
-            className="hover:underline transition-all"
+            className="font-medium text-blue-600 hover:underline dark:text-blue-400"
             href="https://creativecommons.org/licenses/by-sa/4.0/"
           >
             Creative Commons Attribution-ShareAlike 4.0 License
