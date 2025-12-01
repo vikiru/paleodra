@@ -13,7 +13,8 @@ const FEATURES = [
   },
   {
     title: 'Search Dinosaurs',
-    description: 'Find dinosaurs by name',
+    description:
+      'Quickly find and explore any dinosaur species by name, diet, or locomotion',
     icon: '🔍',
   },
 ];
