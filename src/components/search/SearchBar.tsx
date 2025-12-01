@@ -1,6 +1,7 @@
 'use client';
 
 import { Search } from 'lucide-react';
+import { memo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { useSearchSuggestions } from '@/hooks/useSearchSuggestions';
@@ -73,3 +74,5 @@ export function SearchBar({
     </div>
   );
 }
+
+export default memo(SearchBar);

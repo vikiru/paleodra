@@ -20,16 +20,16 @@ export function HeaderSection({
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
         {name}
       </h1>
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="capitalize inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-800 ring-1 ring-primary-200 dark:bg-primary-900/80 dark:text-primary-100 dark:ring-primary-700">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center rounded-full bg-background px-3 py-1.5 text-sm font-medium ring-1 ring-border capitalize">
           <Utensils className="mr-1.5 h-4 w-4" />
           {diet}
         </span>
-        <span className="capitalize inline-flex items-center rounded-full bg-primary-100 px-4 py-1.5 text-sm font-semibold text-primary-800 ring-1 ring-primary-200 dark:bg-primary-900/80 dark:text-primary-100 dark:ring-primary-700">
+        <span className="inline-flex items-center rounded-full bg-background px-3 py-1.5 text-sm font-medium ring-1 ring-border capitalize">
           <Footprints className="mr-1.5 h-4 w-4" />
           {locomotionType}
         </span>
-        <span className="inline-flex items-center rounded-full bg-gray-100 px-4 py-1.5 text-sm font-semibold text-gray-800 ring-1 ring-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:ring-gray-600">
+        <span className="inline-flex items-center rounded-full bg-background px-3 py-1.5 text-sm font-medium ring-1 ring-border">
           <Clock aria-hidden="true" className="mr-1.5 h-4 w-4 text-amber-500" />
           {temporalRange}
         </span>

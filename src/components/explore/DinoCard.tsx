@@ -17,20 +17,20 @@ const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
     <Card
       className={`group relative overflow-hidden border-border/10 bg-background/30 ${isUndiscovered ? 'opacity-75' : ''}`}
     >
-      <div className="aspect-4/3 overflow-hidden">
+      <div className="aspect-4/3 w-full">
         {isUndiscovered ? (
           <div className="flex h-full w-full items-center justify-center bg-muted/50">
             <HelpCircle className="h-16 w-16 text-muted-foreground/50" />
           </div>
         ) : (
-          <Image
-            alt={dino.name}
-            className="h-full w-full object-fit transition-transform duration-500 group-hover:scale-105"
-            height={300}
-            loading="lazy"
-            src={dino.image.imageURL}
-            width={400}
-          />
+          <div className="relative w-full h-full overflow-hidden rounded-md">
+            <Image
+              alt={dino.name}
+              className="object-fit transition-transform duration-500 group-hover:scale-105"
+              fill
+              src={dino.image.imageURL}
+            />
+          </div>
         )}
         {!isUndiscovered && (
           <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
@@ -52,7 +52,9 @@ const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
         <div className="mt-2 flex items-center text-xs text-muted-foreground sm:text-sm capitalize">
           <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4" />
           <span className="truncate">
-            {isUndiscovered ? 'Unknown Era' : dino.temporalRange || 'Unknown'}
+            {isUndiscovered || dino.temporalRange === 'Unknown'
+              ? 'Unknown Era'
+              : dino.temporalRange || 'Unknown'}
           </span>
         </div>
         <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
