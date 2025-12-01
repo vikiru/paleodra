@@ -2,7 +2,7 @@ import { API_URL } from '@/config';
 import { pingApi } from '@/lib/utils/pingApi';
 import type { Dinosaur } from '@/types/Dinosaur';
 
-const MAX_PAGE = 23;
+const MAX_PAGE = 24;
 export async function fetchData(): Promise<Dinosaur[]> {
   try {
     let pageCount = 1;
