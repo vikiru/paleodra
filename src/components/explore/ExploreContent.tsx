@@ -2,6 +2,7 @@
 
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
 import { PaginatedDinoGrid } from '../dinodex/PaginatedDinoGrid';
+import { EmptyResults } from '../search/EmptyResults';
 import { FilterPanel } from '../search/FilterPanel';
 import { SearchBar } from '../search/SearchBar';
 
@@ -54,14 +55,20 @@ export function ExploreContent({ searchParams }: ExploreContentProps) {
 
         {hasActiveFilters && (
           <div className="mb-6">
-            <p className="text-sm text-muted-foreground">
-              Found {filteredDinosaurs.length} dinosaur
-              {filteredDinosaurs.length !== 1 ? 's' : ''}
-            </p>
+            {filteredDinosaurs.length > 0 ? (
+              <p className="text-sm text-muted-foreground">
+                Found {filteredDinosaurs.length} dinosaur
+                {filteredDinosaurs.length !== 1 ? 's' : ''}
+              </p>
+            ) : (
+              <EmptyResults message="No dinosaurs match your search and filter criteria" />
+            )}
           </div>
         )}
 
-        <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
+        {filteredDinosaurs.length > 0 && (
+          <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
+        )}
       </div>
     </div>
   );
