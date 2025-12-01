@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import dinosaurs from '@/data/dinosaurs.json';
 import { createSearchIndex, searchQuery } from '@/lib/utils/flexSearch';
 import type { Dinosaur } from '@/types/Dinosaur';
+import type { SearchIndex } from '@/types/SearchIndex';
 
 const dinosaursData = dinosaurs as unknown as Dinosaur[];
 
@@ -11,7 +12,7 @@ const searchIndex = createSearchIndex(
 
 type UseFlexSearchReturn = {
   searchDinosaurs: (query: string) => number[];
-  searchMatches: (query: string) => Array<{ id: number; name: string }>;
+  searchMatches: (query: string) => Array<SearchIndex>;
 };
 
 export function useFlexSearch(): UseFlexSearchReturn {
@@ -33,7 +34,7 @@ export function useFlexSearch(): UseFlexSearchReturn {
   }, []);
 
   const searchMatches = useMemo(() => {
-    return (query: string): Array<{ id: number; name: string }> => {
+    return (query: string): Array<SearchIndex> => {
       if (!query.trim()) return [];
 
       try {

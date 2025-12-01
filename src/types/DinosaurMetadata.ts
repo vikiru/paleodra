@@ -4,5 +4,5 @@ export type DinosaurMetadata = Pick<
   Dinosaur,
   'id' | 'name' | 'temporalRange' | 'diet' | 'locomotionType'
 > & {
-  imageUrl: string;
+  imageURL: string;
 };
