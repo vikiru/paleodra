@@ -7,9 +7,6 @@ import { HeaderSection } from '@/components/dino-details/HeaderSection';
 import { ImageSection } from '@/components/dino-details/ImageSection';
 import { SourceSection } from '@/components/dino-details/SourceSection';
 import { Button } from '@/components/ui/button';
-import type { ClassificationInfo } from '@/types/ClassificationInfo';
-import type { Diet } from '@/types/Diet';
-import type { Locomotion } from '@/types/Locomotion';
 
 export async function generateStaticParams() {
   const dinosaurs = await import('@/data/dinosaurs.json');
@@ -42,23 +39,10 @@ export default async function DinoPage({ params }: { params: { id: string } }) {
             </Button>
           </div>
 
-          <HeaderSection
-            diet={dino.diet as Diet}
-            locomotionType={dino.locomotionType as Locomotion}
-            name={dino.name}
-            temporalRange={dino.temporalRange || 'Unknown'}
-          />
-
+          <HeaderSection dino={dino} />
           <ImageSection image={dino.image} />
-
           <DescriptionSection description={dino.description} />
-
-          <ClassificationSection
-            classificationInfo={
-              dino.classificationInfo as unknown as ClassificationInfo
-            }
-          />
-
+          <ClassificationSection classificationInfo={dino.classificationInfo} />
           <SourceSection source={dino.source} />
         </div>
       </div>

@@ -1,10 +1,9 @@
 'use client';
 
+import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
+import { SearchFilters } from './SearchFilters';
+import { ExploreResultsInfo } from './ExploreResultsInfo';
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
-import { PaginatedDinoGrid } from '../dinodex/PaginatedDinoGrid';
-import { EmptyResults } from '../search/EmptyResults';
-import { FilterPanel } from '../search/FilterPanel';
-import { SearchBar } from '../search/SearchBar';
 
 type ExploreContentProps = {
   searchParams: { [key: string]: string | undefined };
@@ -17,14 +16,7 @@ export function ExploreContent({ searchParams }: ExploreContentProps) {
     locomotion: searchParams.locomotion || 'all',
   };
 
-  const {
-    filterState,
-    setSearchQuery,
-    setDiet,
-    setLocomotion,
-    filteredDinosaurs,
-    hasActiveFilters,
-  } = useDinosaurFilters(initialState);
+  const { filteredDinosaurs } = useDinosaurFilters(initialState);
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
@@ -34,37 +26,12 @@ export function ExploreContent({ searchParams }: ExploreContentProps) {
             Explore Dinosaurs
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Discover fascinating prehistoric creatures from across different
-            eras
+            Discover fascinating prehistoric creatures from across different eras
           </p>
         </div>
-
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <SearchBar
-            onChange={setSearchQuery}
-            placeholder="Search for a dinosaur..."
-            value={filterState.searchQuery}
-          />
-          <FilterPanel
-            diet={filterState.diet}
-            locomotion={filterState.locomotion}
-            onDietChange={setDiet}
-            onLocomotionChange={setLocomotion}
-          />
-        </div>
-
-        {hasActiveFilters && (
-          <div className="mb-6">
-            {filteredDinosaurs.length > 0 ? (
-              <p className="text-sm text-muted-foreground">
-                Found {filteredDinosaurs.length} dinosaur
-                {filteredDinosaurs.length !== 1 ? 's' : ''}
-              </p>
-            ) : (
-              <EmptyResults message="No dinosaurs match your search and filter criteria" />
-            )}
-          </div>
-        )}
+        
+        <SearchFilters searchParams={searchParams} />
+        <ExploreResultsInfo searchParams={searchParams} />
 
         {filteredDinosaurs.length > 0 && (
           <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />

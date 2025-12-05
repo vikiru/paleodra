@@ -1,9 +1,8 @@
 'use client';
 
-import { memo, useCallback, useRef } from 'react';
-import { Pagination } from '@/components/dinodex/Pagination';
-import DinoCard from '@/components/explore/DinoCard';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { memo, useRef } from 'react';
+import { DinoGrid } from '@/components/dinodex/DinoGrid';
+import { usePagination } from '@/hooks/usePagination';
 import type { Dinosaur } from '@/types/Dinosaur';
 
 type PaginatedDinoGridProps = {
@@ -12,32 +11,41 @@ type PaginatedDinoGridProps = {
 
 export function PaginatedDinoGrid({ dinosaurs }: PaginatedDinoGridProps) {
   const scrollAreaRef = useRef<HTMLDivElement | null>(null);
-
-  const renderDinosaurs = useCallback(
-    (currentDinosaurs: Dinosaur[]) => (
-      <ScrollArea
-        className="h-[calc(100vh-17rem)] pr-4 overscroll-contain"
-        id="dino-grid-scroll-area"
-        ref={scrollAreaRef}
-      >
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {currentDinosaurs.map((dino) => (
-            <DinoCard dino={dino} key={dino.id} />
-          ))}
-        </div>
-      </ScrollArea>
-    ),
-    [],
-  );
+  
+  const {
+    currentItems,
+    currentPage,
+    totalPages,
+    goToPage,
+    nextPage,
+    previousPage,
+    isFirstPage,
+    isLastPage,
+  } = usePagination(dinosaurs, 50);
 
   return (
-    <Pagination<Dinosaur>
-      items={dinosaurs}
-      itemsPerPage={50}
-      scrollAreaRef={scrollAreaRef}
-    >
-      {renderDinosaurs}
-    </Pagination>
+    <div>
+      <DinoGrid dinosaurs={currentItems} />
+      <div className="flex justify-center mt-4 gap-2">
+        <button 
+          onClick={previousPage} 
+          disabled={isFirstPage}
+          className="px-3 py-1 border rounded disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="px-3 py-1">
+          {currentPage} of {totalPages}
+        </span>
+        <button 
+          onClick={nextPage} 
+          disabled={isLastPage}
+          className="px-3 py-1 border rounded disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 }
 
