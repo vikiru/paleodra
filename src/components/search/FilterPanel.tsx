@@ -9,13 +9,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-interface FilterPanelProps {
+type FilterPanelProps = {
   diet?: string;
   locomotion?: string;
   onDietChange?: (value: string) => void;
   onLocomotionChange?: (value: string) => void;
   className?: string;
-}
+};
 
 const DIET_OPTIONS = ['carnivore', 'herbivore', 'omnivore', 'piscivore'];
 const LOCOMOTION_OPTIONS = [

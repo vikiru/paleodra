@@ -1,5 +1,5 @@
+import { ClassificationTable } from '@/components/dino-details/ClassificationTable';
 import type { ClassificationInfo } from '@/types/ClassificationInfo';
-import { ClassificationTable } from './ClassificationTable';
 
 type ClassificationSectionProps = {
   classificationInfo: ClassificationInfo;
