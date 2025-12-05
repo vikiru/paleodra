@@ -1,34 +1,36 @@
-type Info = {
-  value: string;
-};
-
-export type ClassType = 'Class' | 'Subclass';
-export type OrderType = 'Infraorder' | 'Order' | 'Suborder';
-export type FamilyType = 'Family' | 'Subfamily' | 'Superfamily';
-export type TribeType = 'Subtribe' | 'Tribe';
-export type GenusType = 'Genus';
-export type SpeciesType = 'Species';
+export type ClassType = 'Class' | 'Subclass' | string;
+export type OrderType = 'Infraorder' | 'Order' | 'Suborder' | string;
+export type FamilyType = 'Family' | 'Subfamily' | 'Superfamily' | string;
+export type TribeType = 'Subtribe' | 'Tribe' | string;
+export type GenusType = 'Genus' | string;
+export type SpeciesType = 'Species' | string;
 
 export type ClassInfo = {
   classType: ClassType;
-} & Info;
+  value: string;
+}[];
 
 export type FamilyInfo = {
   familyType: FamilyType;
-} & Info;
+  value: string;
+}[];
 
 export type TribeInfo = {
   tribeType: TribeType;
-} & Info;
+  value: string;
+}[];
 
 export type OrderInfo = {
   orderType: OrderType;
-} & Info;
+  value: string;
+}[];
 
 export type GenusInfo = {
   genusType: GenusType;
-} & Info;
+  value: string;
+}[];
 
 export type SpeciesInfo = {
   speciesType: SpeciesType;
-} & Info;
+  value: string;
+}[];

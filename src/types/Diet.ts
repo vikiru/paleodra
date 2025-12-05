@@ -5,4 +5,4 @@ export const ODiet = {
   PISCIVORE: 'piscivore',
 } as const;
 
-export type Diet = (typeof ODiet)[keyof typeof ODiet];
+export type Diet = (typeof ODiet)[keyof typeof ODiet] | string;

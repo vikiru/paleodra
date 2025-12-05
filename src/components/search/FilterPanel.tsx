@@ -1,13 +1,8 @@
 'use client';
 
 import { memo } from 'react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { DietFilter } from './DietFilter';
+import { LocomotionFilter } from './LocomotionFilter';
 
 type FilterPanelProps = {
   diet?: string;
@@ -16,15 +11,6 @@ type FilterPanelProps = {
   onLocomotionChange?: (value: string) => void;
   className?: string;
 };
-
-const DIET_OPTIONS = ['carnivore', 'herbivore', 'omnivore', 'piscivore'];
-const LOCOMOTION_OPTIONS = [
-  'biped',
-  'quadruped',
-  'swimming',
-  'flying',
-  'gliding',
-];
 
 export function FilterPanel({
   diet = '',
@@ -35,33 +21,8 @@ export function FilterPanel({
 }: FilterPanelProps) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
-      <Select onValueChange={onDietChange} value={diet}>
-        <SelectTrigger className="w-40">
-          <SelectValue placeholder="All Diets" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Diets</SelectItem>
-          {DIET_OPTIONS.map((option) => (
-            <SelectItem key={option} value={option}>
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      <Select onValueChange={onLocomotionChange} value={locomotion}>
-        <SelectTrigger className="w-40">
-          <SelectValue placeholder="All Locomotion" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">All Locomotion</SelectItem>
-          {LOCOMOTION_OPTIONS.map((option) => (
-            <SelectItem key={option} value={option}>
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <DietFilter value={diet} onChange={onDietChange} />
+      <LocomotionFilter value={locomotion} onChange={onLocomotionChange} />
     </div>
   );
 }
