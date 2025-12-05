@@ -1,102 +1,26 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
-import { EmptyResults } from '@/components/search/EmptyResults';
-import { FilterPanel } from '@/components/search/FilterPanel';
-import { SearchBar } from '@/components/search/SearchBar';
-import { Progress } from '@/components/ui/progress';
+import { DinoDexHeader } from '@/components/dinodex/DinoDexHeader';
+import { DiscoveryProgress } from '@/components/dinodex/DiscoveryProgress';
+import { DinoSearchControls } from '@/components/dinodex/DinoSearchControls';
+import { DinoResultsInfo } from '@/components/dinodex/DinoResultsInfo';
 import { useDinoDexFilters } from '@/hooks/useDinoDexFilters';
-import { useDiscoveryTracking } from '@/hooks/useDiscoveryTracking';
 
 export function DinoDexContent() {
-  const {
-    filteredDinosaurs,
-    hasActiveFilters,
-    filterState,
-    setSearchQuery,
-    setDiet,
-    setLocomotion,
-  } = useDinoDexFilters();
-
-  const { discoveredCount, undiscoveredCount, totalCount, progressPercentage } =
-    useDiscoveryTracking();
-
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const { filteredDinosaurs } = useDinoDexFilters();
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-6">
-          <h1 className="text-4xl font-heading font-bold sm:text-5xl">
-            DinoDex
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Complete encyclopedia of all dinosaur species
-          </p>
-          <div className="mt-2 flex flex-wrap gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-green-500" />
-              <span className="text-muted-foreground">
-                {isMounted ? `${discoveredCount} Discovered` : 'Loading...'}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-gray-400" />
-              <span className="text-muted-foreground">
-                {isMounted ? `${undiscoveredCount} Undiscovered` : 'Loading...'}
-              </span>
-            </div>
-          </div>
-        </div>
+        <DinoDexHeader />
 
         <div className="mb-8 space-y-4">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Discovery Progress</span>
-              <span className="text-muted-foreground">
-                {isMounted
-                  ? `${discoveredCount} of ${totalCount} dinosaurs discovered`
-                  : 'Loading...'}
-              </span>
-            </div>
-            <Progress
-              className="h-2"
-              value={isMounted ? progressPercentage : 0}
-            />
-          </div>
-
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <SearchBar
-              onChange={setSearchQuery}
-              placeholder="Search dinosaurs..."
-              value={filterState.searchQuery}
-            />
-            <FilterPanel
-              diet={filterState.diet}
-              locomotion={filterState.locomotion}
-              onDietChange={setDiet}
-              onLocomotionChange={setLocomotion}
-            />
-          </div>
+          <DiscoveryProgress />
+          <DinoSearchControls />
         </div>
 
-        {hasActiveFilters && (
-          <div className="mb-6">
-            {filteredDinosaurs.length > 0 ? (
-              <p className="text-sm text-muted-foreground">
-                Found {filteredDinosaurs.length} dinosaur
-                {filteredDinosaurs.length !== 1 ? 's' : ''}
-              </p>
-            ) : (
-              <EmptyResults message="No dinosaurs match your search and filter criteria" />
-            )}
-          </div>
-        )}
+        <DinoResultsInfo />
 
         {filteredDinosaurs.length > 0 && (
           <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
