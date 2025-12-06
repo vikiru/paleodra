@@ -15,12 +15,12 @@ type SearchBarProps = {
   disabled?: boolean;
 };
 
-export function SearchBar({
+export const SearchBar = memo(function SearchBar({
   value = '',
   onChange,
-  placeholder = 'Search for a dinosaur...',
+  placeholder = 'Search dinosaurs...',
   className = '',
-  showSuggestions = false,
+  showSuggestions = true,
   disabled = false,
 }: SearchBarProps) {
   const {
@@ -74,6 +74,4 @@ export function SearchBar({
       )}
     </div>
   );
-}
-
-export default memo(SearchBar);
+});

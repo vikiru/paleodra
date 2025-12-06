@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
+import dinosaurs from '@/data/dinosaurs.json';
 import { useStaticSearch } from '@/hooks/useStaticSearch';
+import type { Dinosaur } from '@/types/Dinosaur';
 import type { SearchIndex } from '@/types/SearchIndex';
 
-type UseSearchSuggestionsReturn = {
+type SearchSuggestionData = {
   suggestions: Array<SearchIndex>;
   showSuggestions: boolean;
   query: string;
@@ -12,22 +14,27 @@ type UseSearchSuggestionsReturn = {
 
 export function useSearchSuggestions(
   maxSuggestions: number = 5,
-): UseSearchSuggestionsReturn {
+): SearchSuggestionData {
   const [query, setQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const { searchMatches } = useStaticSearch();
+  const { searchDinosaur } = useStaticSearch();
 
   const suggestions = useMemo(() => {
     if (!query.trim()) return [];
 
     try {
-      const matches = searchMatches(query);
-      return matches.slice(0, maxSuggestions);
+      const matchIds = searchDinosaur(query);
+      const matches = (dinosaurs as unknown as Dinosaur[])
+        .filter((dino) => matchIds.includes(dino.id))
+        .slice(0, maxSuggestions)
+        .map(({ id, name }) => ({ id, name }));
+
+      return matches;
     } catch (error) {
       console.warn('Search suggestions error:', error);
       return [];
     }
-  }, [query, searchMatches, maxSuggestions]);
+  }, [query, searchDinosaur, maxSuggestions]);
 
   const handleSetQuery = (newQuery: string) => {
     setQuery(newQuery);

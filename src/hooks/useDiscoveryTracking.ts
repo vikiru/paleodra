@@ -5,7 +5,7 @@ import type { Dinosaur } from '@/types/Dinosaur';
 
 const dinosaursData = dinosaurs as unknown as Dinosaur[];
 
-type UseDiscoveryTrackingReturn = {
+type DiscoveryTrackingData = {
   totalSeenCount: number;
   totalCount: number;
   progressPercentage: number;
@@ -15,7 +15,7 @@ type UseDiscoveryTrackingReturn = {
   markAsDiscovered: (id: number) => void;
 };
 
-export function useDiscoveryTracking(): UseDiscoveryTrackingReturn {
+export function useDiscoveryTracking(): DiscoveryTrackingData {
   const { seenIds, getAllSeenIds, markAsSeen } = useDinoStore();
 
   const totalCount = dinosaursData.length;

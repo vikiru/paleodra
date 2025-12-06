@@ -13,7 +13,7 @@ type FilterPanelProps = {
   disabled?: boolean;
 };
 
-export function FilterPanel({
+export const FilterPanel = memo(function FilterPanel({
   diet = '',
   locomotion = '',
   onDietChange,
@@ -31,6 +31,4 @@ export function FilterPanel({
       />
     </div>
   );
-}
-
-export default memo(FilterPanel);
+});

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useClassificationTable } from '@/hooks/useClassificationTable';
 import type { ClassificationInfo } from '@/types/ClassificationInfo';
 
@@ -5,7 +6,7 @@ type ClassificationTableProps = {
   classificationInfo: ClassificationInfo;
 };
 
-export function ClassificationTable({
+export const ClassificationTable = memo(function ClassificationTable({
   classificationInfo,
 }: ClassificationTableProps) {
   const { items } = useClassificationTable(classificationInfo);
@@ -26,4 +27,4 @@ export function ClassificationTable({
       </div>
     </div>
   );
-}
+});

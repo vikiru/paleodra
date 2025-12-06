@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-type UsePaginationReturn<T> = {
+type PaginationData<T> = {
   currentPage: number;
   totalPages: number;
   startIndex: number;
@@ -17,7 +17,7 @@ type UsePaginationReturn<T> = {
 export function usePagination<T>(
   items: T[],
   itemsPerPage: number = 50,
-): UsePaginationReturn<T> {
+): PaginationData<T> {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = useMemo(
@@ -79,7 +79,7 @@ export function usePagination<T>(
   };
 }
 
-type UsePaginationWithScrollReturn<T> = UsePaginationReturn<T> & {
+type UsePaginationWithScrollReturn<T> = PaginationData<T> & {
   handlePageChange: (page: number) => void;
   handleNextPage: () => void;
   handlePreviousPage: () => void;

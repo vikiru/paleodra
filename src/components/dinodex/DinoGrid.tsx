@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import DinoCard from '@/components/explore/DinoCard';
+import { DinoCard } from '@/components/explore/DinoCard';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { Dinosaur } from '@/types/Dinosaur';
 
