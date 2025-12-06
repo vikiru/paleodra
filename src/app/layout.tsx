@@ -9,6 +9,7 @@ const heading = Gotu({
   weight: '400',
   variable: '--font-heading',
   display: 'swap',
+  subsets: ['latin'],
   preload: true,
 });
 
@@ -24,6 +25,7 @@ const logo = Amaranth({
   weight: '400',
   variable: '--font-logo',
   display: 'swap',
+  subsets: ['latin'],
   preload: true,
 });
 
