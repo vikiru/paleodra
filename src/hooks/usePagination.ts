@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-type PaginationData<T> = {
+export type PaginationData<T> = {
   currentPage: number;
   totalPages: number;
   startIndex: number;
@@ -76,65 +76,5 @@ export function usePagination<T>(
     isFirstPage,
     isLastPage,
     resetToFirstPage,
-  };
-}
-
-type UsePaginationWithScrollReturn<T> = PaginationData<T> & {
-  handlePageChange: (page: number) => void;
-  handleNextPage: () => void;
-  handlePreviousPage: () => void;
-};
-
-export function usePaginationWithScroll<T>(
-  items: T[],
-  itemsPerPage: number = 50,
-  scrollAreaRef?: React.RefObject<HTMLDivElement | null>,
-): UsePaginationWithScrollReturn<T> {
-  const pagination = usePagination<T>(items, itemsPerPage);
-  const previousItemsRef = useRef<T[]>([]);
-
-  const scrollToTop = useCallback(() => {
-    if (scrollAreaRef?.current) {
-      const viewport = scrollAreaRef.current.querySelector(
-        '[data-radix-scroll-area-viewport]',
-      ) as HTMLElement;
-      if (viewport) {
-        viewport.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  }, [scrollAreaRef]);
-
-  const handlePageChange = useCallback(
-    (page: number) => {
-      pagination.goToPage(page);
-      scrollToTop();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-    [pagination.goToPage, scrollToTop],
-  );
-
-  const handleNextPage = useCallback(() => {
-    pagination.nextPage();
-    scrollToTop();
-  }, [pagination.nextPage, scrollToTop]);
-
-  const handlePreviousPage = useCallback(() => {
-    pagination.previousPage();
-    scrollToTop();
-  }, [pagination.previousPage, scrollToTop]);
-
-  useEffect(() => {
-    if (previousItemsRef.current !== items) {
-      pagination.resetToFirstPage();
-      scrollToTop();
-      previousItemsRef.current = items;
-    }
-  }, [items, pagination.resetToFirstPage, scrollToTop]);
-
-  return {
-    ...pagination,
-    handlePageChange,
-    handleNextPage,
-    handlePreviousPage,
   };
 }
