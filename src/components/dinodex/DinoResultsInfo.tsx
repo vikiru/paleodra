@@ -10,7 +10,8 @@ export function DinoResultsInfo() {
     <div className="mb-6">
       {filteredDinosaurs.length > 0 ? (
         <p className="text-sm text-muted-foreground">
-          Found {filteredDinosaurs.length} dinosaur{filteredDinosaurs.length !== 1 ? 's' : ''}
+          Found {filteredDinosaurs.length} dinosaur
+          {filteredDinosaurs.length !== 1 ? 's' : ''}
         </p>
       ) : (
         <EmptyResults message="No dinosaurs match your search and filter criteria" />

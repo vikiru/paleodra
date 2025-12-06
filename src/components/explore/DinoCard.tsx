@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { DinoImage } from './DinoImage';
-import { DinoName } from './DinoName';
-import { DinoMetadata } from './DinoMetadata';
 import type { Dinosaur } from '@/types/Dinosaur';
+import { DinoImage } from './DinoImage';
+import { DinoMetadata } from './DinoMetadata';
+import { DinoName } from './DinoName';
 
 type DinoCardProps = {
   dino: Dinosaur & { isUndiscovered?: boolean };

@@ -6,4 +6,6 @@ export const OLocomotion = {
   SWIMMING: 'swimming',
 } as const;
 
-export type Locomotion = (typeof OLocomotion)[keyof typeof OLocomotion] | string;
+export type Locomotion =
+  | (typeof OLocomotion)[keyof typeof OLocomotion]
+  | string;

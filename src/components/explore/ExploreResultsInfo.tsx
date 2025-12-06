@@ -1,18 +1,13 @@
 import { EmptyResults } from '@/components/search/EmptyResults';
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
+import { useSearchStore } from '@/store/searchStore';
 
-type ExploreResultsInfoProps = {
-  searchParams: { [key: string]: string | undefined };
-};
+export function ExploreResultsInfo() {
+  const { filteredDinosaurs } = useDinosaurFilters();
+  const { searchQuery, diet, locomotion } = useSearchStore();
 
-export function ExploreResultsInfo({ searchParams }: ExploreResultsInfoProps) {
-  const initialState = {
-    searchQuery: searchParams.search || '',
-    diet: searchParams.diet || 'all',
-    locomotion: searchParams.locomotion || 'all',
-  };
-
-  const { filteredDinosaurs, hasActiveFilters } = useDinosaurFilters(initialState);
+  const hasActiveFilters =
+    searchQuery !== '' || diet !== 'all' || locomotion !== 'all';
 
   if (!hasActiveFilters) return null;
 

@@ -14,13 +14,13 @@ type ClassificationItem = {
   value: string;
 };
 
-type UseClassificationTableReturn = {
+type ClassificationTableData = {
   items: ClassificationItem[];
 };
 
 export function useClassificationTable(
   classificationInfo: ClassificationInfo,
-): UseClassificationTableReturn {
+): ClassificationTableData {
   const items = useMemo(() => {
     const result: ClassificationItem[] = [];
 
@@ -35,50 +35,50 @@ export function useClassificationTable(
       } else if (value && typeof value === 'object' && 'value' in value) {
         switch (key) {
           case 'classInfo': {
-            const classInfo = value as ClassInfo;
+            const classInfo = value as unknown as ClassInfo;
             result.push({
-              label: classInfo.classType,
-              value: classInfo.value,
+              label: classInfo[0].classType,
+              value: classInfo[0].value,
             });
             break;
           }
           case 'orderInfo': {
-            const orderInfo = value as OrderInfo;
+            const orderInfo = value as unknown as OrderInfo;
             result.push({
-              label: orderInfo.orderType,
-              value: orderInfo.value,
+              label: orderInfo[0].orderType,
+              value: orderInfo[0].value,
             });
             break;
           }
           case 'familyInfo': {
-            const familyInfo = value as FamilyInfo;
+            const familyInfo = value as unknown as FamilyInfo;
             result.push({
-              label: familyInfo.familyType,
-              value: familyInfo.value,
+              label: familyInfo[0].familyType,
+              value: familyInfo[0].value,
             });
             break;
           }
           case 'tribeInfo': {
-            const tribeInfo = value as TribeInfo;
+            const tribeInfo = value as unknown as TribeInfo;
             result.push({
-              label: tribeInfo.tribeType,
-              value: tribeInfo.value,
+              label: tribeInfo[0].tribeType,
+              value: tribeInfo[0].value,
             });
             break;
           }
           case 'genusInfo': {
-            const genusInfo = value as GenusInfo;
+            const genusInfo = value as unknown as GenusInfo;
             result.push({
-              label: genusInfo.genusType,
-              value: genusInfo.value,
+              label: genusInfo[0].genusType,
+              value: genusInfo[0].value,
             });
             break;
           }
           case 'speciesInfo': {
-            const speciesInfo = value as SpeciesInfo;
+            const speciesInfo = value as unknown as SpeciesInfo;
             result.push({
-              label: speciesInfo.speciesType,
-              value: speciesInfo.value,
+              label: speciesInfo[0].speciesType,
+              value: speciesInfo[0].value,
             });
             break;
           }

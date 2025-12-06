@@ -9,10 +9,9 @@ export function ImageSection({ image }: ImageSectionProps) {
   return (
     <section className="mt-12">
       <div className="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
-        <div className="relative w-full aspect-4/3 max-h-120 ">
+        <div className="relative w-full max-w-full aspect-video max-h-120">
           <Image
             alt={image?.title || ''}
-            className="object-cover"
             fill
             loading="eager"
             src={image?.imageURL || ''}

@@ -5,7 +5,8 @@ import { Progress } from '@/components/ui/progress';
 import { useDiscoveryTracking } from '@/hooks/useDiscoveryTracking';
 
 export function DiscoveryProgress() {
-  const { discoveredCount, totalCount, progressPercentage } = useDiscoveryTracking();
+  const { discoveredCount, totalCount, progressPercentage } =
+    useDiscoveryTracking();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -22,10 +23,7 @@ export function DiscoveryProgress() {
             : 'Loading...'}
         </span>
       </div>
-      <Progress
-        className="h-2"
-        value={isMounted ? progressPercentage : 0}
-      />
+      <Progress className="h-2" value={isMounted ? progressPercentage : 0} />
     </div>
   );
 }

@@ -1,38 +1,24 @@
 'use client';
 
-import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
-import { SearchFilters } from './SearchFilters';
-import { ExploreResultsInfo } from './ExploreResultsInfo';
+import PaginatedDinoGrid from '@/components/dinodex/PaginatedDinoGrid';
+import { SearchFilters } from '@/components/explore/SearchFilters';
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
 
-type ExploreContentProps = {
-  searchParams: { [key: string]: string | undefined };
-};
-
-export function ExploreContent({ searchParams }: ExploreContentProps) {
-  const initialState = {
-    searchQuery: searchParams.search || '',
-    diet: searchParams.diet || 'all',
-    locomotion: searchParams.locomotion || 'all',
-  };
-
-  const { filteredDinosaurs } = useDinosaurFilters(initialState);
+export function ExploreContent() {
+  const { filteredDinosaurs } = useDinosaurFilters();
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-heading font-bold sm:text-5xl">
+          <h1 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Explore Dinosaurs
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Discover fascinating prehistoric creatures from across different eras
+          <p className="text-lg text-gray-600">
+            Discover and learn about amazing prehistoric creatures
           </p>
         </div>
-        
-        <SearchFilters searchParams={searchParams} />
-        <ExploreResultsInfo searchParams={searchParams} />
-
+        <SearchFilters />
         {filteredDinosaurs.length > 0 && (
           <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
         )}
