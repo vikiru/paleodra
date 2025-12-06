@@ -50,7 +50,7 @@ export function Footer() {
                   </a>
                   <a
                     className="text-muted-foreground hover:text-primary hover:underline transition-colors"
-                    href="https://vikiru.github.io/restausaurus/"
+                    href="https://vikiru.github.io/restasaurus/"
                   >
                     API Documentation
                   </a>

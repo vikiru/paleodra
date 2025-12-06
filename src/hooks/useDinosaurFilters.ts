@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
-import dinosaurs from '@/data/dinosaurs.json';
+import dinoMetadata from '@/data/dinoMetadata.json';
 import { useStaticSearch } from '@/hooks/useStaticSearch';
 import { useSearchStore } from '@/store/searchStore';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
-const dinosaursData = dinosaurs as unknown as Dinosaur[];
+const dinosaursData = dinoMetadata as unknown as DinosaurMetadata[];
 
 type DinosaurFilterData = {
-  filteredDinosaurs: Dinosaur[];
+  filteredDinosaurs: DinosaurMetadata[];
   isLoading: boolean;
 };
 
@@ -24,14 +24,14 @@ export function useDinosaurFilters(): DinosaurFilterData {
     if (searchQuery.trim()) {
       dinosaurIds = searchDinosaur(searchQuery);
     } else {
-      dinosaurIds = dinosaursData.map((dino: Dinosaur) => dino.id);
+      dinosaurIds = dinosaursData.map((dino: DinosaurMetadata) => dino.id);
     }
 
-    const filteredById = dinosaursData.filter((dino: Dinosaur) =>
+    const filteredById = dinosaursData.filter((dino: DinosaurMetadata) =>
       dinosaurIds.includes(dino.id),
     );
 
-    return filteredById.filter((dino: Dinosaur) => {
+    return filteredById.filter((dino: DinosaurMetadata) => {
       const matchesDiet = dietFilter ? dino.diet === dietFilter : true;
       const matchesLocomotion = locomotionFilter
         ? dino.locomotionType === locomotionFilter

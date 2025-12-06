@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
-import dinosaurs from '@/data/dinosaurs.json';
+import dinoMetadata from '@/data/dinoMetadata.json';
 import { useSearchInitializer } from '@/hooks/useSearchInitializer';
 import { searchQuery } from '@/lib/utils/flexSearch';
 import { useSearchStore } from '@/store/searchStore';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
-const dinosaursData = dinosaurs as unknown as Dinosaur[];
+const dinosaursData = dinoMetadata as unknown as DinosaurMetadata[];
 
 export function useStaticSearch() {
   const { isInitialized } = useSearchInitializer();

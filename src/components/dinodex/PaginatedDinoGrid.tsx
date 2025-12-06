@@ -13,10 +13,10 @@ import {
 } from '@/components/ui/pagination';
 import { Spinner } from '@/components/ui/spinner';
 import { usePaginationScroll } from '@/hooks/usePaginationScroll';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type PaginatedDinoGridProps = {
-  dinosaurs: Dinosaur[];
+  dinosaurs: DinosaurMetadata[];
   itemsPerPage?: number;
 };
 
