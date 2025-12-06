@@ -10,7 +10,7 @@ type DinoGridProps = {
 export const DinoGrid = memo(function DinoGrid({ dinosaurs }: DinoGridProps) {
   return (
     <ScrollArea
-      className="h-[calc(100vh-17rem)] pr-4 overscroll-contain"
+      className="h-[600px] max-h-[calc(100vh-17rem)] pr-4 overscroll-contain"
       id="dino-grid-scroll-area"
     >
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

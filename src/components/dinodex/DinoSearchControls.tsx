@@ -1,25 +1,30 @@
-import { FilterPanel } from '@/components/search/FilterPanel';
-import { SearchBar } from '@/components/search/SearchBar';
-import { useDinoDexFilters } from '@/hooks/useDinoDexFilters';
+import { FilterPanel as FilterPanelComponent } from '@/components/search/FilterPanel';
+import { SearchBar as SearchBarComponent } from '@/components/search/SearchBar';
+import { useSearchStore } from '@/store/searchStore';
 
 export function DinoSearchControls() {
   const {
-    filterState,
+    searchQuery,
+    diet,
+    locomotion,
+    isLoading,
     setSearchQuery,
     setDiet,
     setLocomotion,
-  } = useDinoDexFilters();
+  } = useSearchStore();
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <SearchBar
+    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <SearchBarComponent
+        disabled={isLoading}
         onChange={setSearchQuery}
-        placeholder="Search dinosaurs..."
-        value={filterState.searchQuery}
+        placeholder="Search for a dinosaur..."
+        value={searchQuery}
       />
-      <FilterPanel
-        diet={filterState.diet}
-        locomotion={filterState.locomotion}
+      <FilterPanelComponent
+        diet={diet}
+        disabled={isLoading}
+        locomotion={locomotion}
         onDietChange={setDiet}
         onLocomotionChange={setLocomotion}
       />

@@ -15,12 +15,12 @@ type FilterDropdownProps = {
   allLabel: string;
 };
 
-export function FilterDropdown({ 
-  value = '', 
-  onChange, 
+export function FilterDropdown({
+  value = '',
+  onChange,
   options,
   placeholder,
-  allLabel
+  allLabel,
 }: FilterDropdownProps) {
   return (
     <Select onValueChange={onChange} value={value}>

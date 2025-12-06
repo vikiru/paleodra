@@ -13,9 +13,7 @@ export function DinoDexHeader() {
 
   return (
     <div className="mb-6">
-      <h1 className="text-4xl font-heading font-bold sm:text-5xl">
-        DinoDex
-      </h1>
+      <h1 className="text-4xl font-heading font-bold sm:text-5xl">DinoDex</h1>
       <p className="mt-4 text-lg text-muted-foreground">
         Complete encyclopedia of all dinosaur species
       </p>

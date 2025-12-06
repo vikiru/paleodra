@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type UsePaginationReturn<T> = {
   currentPage: number;
@@ -20,10 +20,22 @@ export function usePagination<T>(
 ): UsePaginationReturn<T> {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = items.slice(startIndex, endIndex);
+  const totalPages = useMemo(
+    () => Math.ceil(items.length / itemsPerPage),
+    [items.length, itemsPerPage],
+  );
+  const startIndex = useMemo(
+    () => (currentPage - 1) * itemsPerPage,
+    [currentPage, itemsPerPage],
+  );
+  const endIndex = useMemo(
+    () => startIndex + itemsPerPage,
+    [startIndex, itemsPerPage],
+  );
+  const currentItems = useMemo(
+    () => items.slice(startIndex, endIndex),
+    [items, startIndex, endIndex],
+  );
 
   const goToPage = useCallback(
     (page: number) => {
@@ -46,8 +58,11 @@ export function usePagination<T>(
     setCurrentPage(1);
   }, []);
 
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === totalPages;
+  const isFirstPage = useMemo(() => currentPage === 1, [currentPage]);
+  const isLastPage = useMemo(
+    () => currentPage === totalPages,
+    [currentPage, totalPages],
+  );
 
   return {
     currentPage,
@@ -73,7 +88,7 @@ type UsePaginationWithScrollReturn<T> = UsePaginationReturn<T> & {
 export function usePaginationWithScroll<T>(
   items: T[],
   itemsPerPage: number = 50,
-  scrollAreaRef?: React.RefObject<HTMLDivElement>,
+  scrollAreaRef?: React.RefObject<HTMLDivElement | null>,
 ): UsePaginationWithScrollReturn<T> {
   const pagination = usePagination<T>(items, itemsPerPage);
   const previousItemsRef = useRef<T[]>([]);
@@ -93,6 +108,7 @@ export function usePaginationWithScroll<T>(
     (page: number) => {
       pagination.goToPage(page);
       scrollToTop();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     [pagination.goToPage, scrollToTop],
   );

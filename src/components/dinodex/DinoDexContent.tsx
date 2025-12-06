@@ -1,10 +1,10 @@
 'use client';
 
-import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
 import { DinoDexHeader } from '@/components/dinodex/DinoDexHeader';
-import { DiscoveryProgress } from '@/components/dinodex/DiscoveryProgress';
-import { DinoSearchControls } from '@/components/dinodex/DinoSearchControls';
 import { DinoResultsInfo } from '@/components/dinodex/DinoResultsInfo';
+import { DinoSearchControls } from '@/components/dinodex/DinoSearchControls';
+import { DiscoveryProgress } from '@/components/dinodex/DiscoveryProgress';
+import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
 import { useDinoDexFilters } from '@/hooks/useDinoDexFilters';
 
 export function DinoDexContent() {

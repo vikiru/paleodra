@@ -12,6 +12,7 @@ type SearchBarProps = {
   placeholder?: string;
   className?: string;
   showSuggestions?: boolean;
+  disabled?: boolean;
 };
 
 export function SearchBar({
@@ -20,6 +21,7 @@ export function SearchBar({
   placeholder = 'Search for a dinosaur...',
   className = '',
   showSuggestions = false,
+  disabled = false,
 }: SearchBarProps) {
   const {
     suggestions,
@@ -44,6 +46,7 @@ export function SearchBar({
       </div>
       <Input
         className="pl-10 pr-10"
+        disabled={disabled}
         onChange={handleInputChange}
         placeholder={placeholder}
         value={value}
