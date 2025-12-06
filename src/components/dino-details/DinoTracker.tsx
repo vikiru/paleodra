@@ -3,17 +3,16 @@
 import { useEffect } from 'react';
 import { useDinoStore } from '@/store/dinoStore';
 
-type DinoDetailsProps = {
+type DinoTrackerProps = {
   dinoId: number;
-  children: React.ReactNode;
 };
 
-export function DinoDetails({ dinoId, children }: DinoDetailsProps) {
+export function DinoTracker({ dinoId }: DinoTrackerProps) {
   const { markAsSeen } = useDinoStore();
 
   useEffect(() => {
     markAsSeen(dinoId);
   }, [dinoId, markAsSeen]);
 
-  return <>{children}</>;
+  return null;
 }
