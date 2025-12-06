@@ -1,31 +1,22 @@
 import { useMemo } from 'react';
+import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
 import { useDinoStore } from '@/store/dinoStore';
+import { useSearchStore } from '@/store/searchStore';
 import type { Dinosaur } from '@/types/Dinosaur';
-import { type FilterState, useDinosaurFilters } from './useDinosaurFilters';
 
 type DinoDexFiltersReturn = {
   filteredDinosaurs: (Dinosaur & { isUndiscovered: boolean })[];
   discoveredCount: number;
   undiscoveredCount: number;
   hasActiveFilters: boolean;
-  filterState: FilterState;
-  setSearchQuery: (query: string) => void;
-  setDiet: (diet: string) => void;
-  setLocomotion: (locomotion: string) => void;
-  resetFilters: () => void;
+  isLoading: boolean;
 };
 
 export function useDinoDexFilters(): DinoDexFiltersReturn {
   const { seenIds } = useDinoStore();
-  const {
-    filteredDinosaurs: baseFilteredDinosaurs,
-    hasActiveFilters,
-    filterState,
-    setSearchQuery,
-    setDiet,
-    setLocomotion,
-    resetFilters,
-  } = useDinosaurFilters();
+  const { filteredDinosaurs: baseFilteredDinosaurs, isLoading } =
+    useDinosaurFilters();
+  const { searchQuery, diet, locomotion } = useSearchStore();
 
   const filteredDinosaurs = useMemo(() => {
     return baseFilteredDinosaurs.map((dino) => ({
@@ -41,15 +32,14 @@ export function useDinoDexFilters(): DinoDexFiltersReturn {
     (d) => d.isUndiscovered,
   ).length;
 
+  const hasActiveFilters =
+    searchQuery !== '' || diet !== 'all' || locomotion !== 'all';
+
   return {
     filteredDinosaurs,
     discoveredCount,
     undiscoveredCount,
     hasActiveFilters,
-    filterState,
-    setSearchQuery,
-    setDiet,
-    setLocomotion,
-    resetFilters,
+    isLoading,
   };
 }

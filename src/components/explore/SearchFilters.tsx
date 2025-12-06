@@ -1,39 +1,33 @@
-import { FilterPanel } from '@/components/search/FilterPanel';
-import { SearchBar } from '@/components/search/SearchBar';
-import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
+import { FilterPanel as FilterPanelComponent } from '@/components/search/FilterPanel';
+import { SearchBar as SearchBarComponent } from '@/components/search/SearchBar';
+import { useSearchStore } from '@/store/searchStore';
 
-type SearchFiltersProps = {
-  searchParams: { [key: string]: string | undefined };
-};
-
-export function SearchFilters({ searchParams }: SearchFiltersProps) {
-  const initialState = {
-    searchQuery: searchParams.search || '',
-    diet: searchParams.diet || 'all',
-    locomotion: searchParams.locomotion || 'all',
-  };
-
+export function SearchFilters() {
   const {
-    filterState,
+    searchQuery,
+    diet,
+    locomotion,
+    isLoading,
     setSearchQuery,
     setDiet,
     setLocomotion,
-  } = useDinosaurFilters(initialState);
+  } = useSearchStore();
 
   return (
     <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <SearchBar
-        placeholder="Search for a dinosaur..."
-        value={filterState.searchQuery}
+      <SearchBarComponent
+        disabled={isLoading}
         onChange={setSearchQuery}
+        placeholder="Search for a dinosaur..."
+        value={searchQuery}
       />
-      <FilterPanel
-        diet={filterState.diet}
-        locomotion={filterState.locomotion}
+      <FilterPanelComponent
+        diet={diet}
+        disabled={isLoading}
+        locomotion={locomotion}
         onDietChange={setDiet}
         onLocomotionChange={setLocomotion}
       />
     </div>
   );
 }
-

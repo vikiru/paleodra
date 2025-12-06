@@ -10,16 +10,18 @@ import {
 type DietFilterProps = {
   value?: string;
   onChange?: (value: string) => void;
+  disabled?: boolean;
 };
 
 const DIET_OPTIONS = ['carnivore', 'herbivore', 'omnivore', 'piscivore'];
 
-export function DietFilter({ 
-  value = '', 
-  onChange 
+export function DietFilter({
+  value = '',
+  onChange,
+  disabled = false,
 }: DietFilterProps) {
   return (
-    <Select onValueChange={onChange} value={value}>
+    <Select disabled={disabled} onValueChange={onChange} value={value}>
       <SelectTrigger className="w-40">
         <SelectValue placeholder="All Diets" />
       </SelectTrigger>
