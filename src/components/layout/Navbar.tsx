@@ -25,19 +25,22 @@ export function Navbar() {
 
             <nav className="hidden items-center space-x-8 sm:flex">
               {/* Nav links */}
-              {['Home', 'Explore', 'DinoDex'].map((name) => (
-                <Link
-                  className={
-                    pathname === `/${name.toLowerCase()}`
-                      ? 'gradient'
-                      : 'text-muted-foreground'
-                  }
-                  href={`/${name.toLowerCase()}`}
-                  key={name.toLowerCase()}
-                >
-                  {name}
-                </Link>
-              ))}
+              {['Home', 'Explore', 'DinoDex'].map((name) => {
+                const href = name === 'Home' ? '/' : `/${name.toLowerCase()}`;
+                return (
+                  <Link
+                    className={
+                      pathname === href
+                        ? 'gradient'
+                        : 'text-muted-foreground'
+                    }
+                    href={href}
+                    key={name.toLowerCase()}
+                  >
+                    {name}
+                  </Link>
+                );
+              })}
               <ThemeToggle />
             </nav>
 
@@ -51,15 +54,18 @@ export function Navbar() {
           {isOpen && (
             <div className="absolute left-0 right-0 z-50 bg-background px-4 pb-4 shadow-lg md:hidden">
               <div className="flex flex-col space-y-2 pt-2">
-                {['Home', 'Explore', 'DinoDex'].map((name) => (
-                  <Link
-                    href={`/${name.toLowerCase()}`}
-                    key={name.toLowerCase()}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {name}
-                  </Link>
-                ))}
+                {['Home', 'Explore', 'DinoDex'].map((name) => {
+                  const href = name === 'Home' ? '/' : `/${name.toLowerCase()}`;
+                  return (
+                    <Link
+                      href={href}
+                      key={name.toLowerCase()}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           )}
