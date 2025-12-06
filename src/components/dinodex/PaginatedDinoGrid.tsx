@@ -11,7 +11,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { usePaginationWithScroll } from '@/hooks/usePagination';
+import { Spinner } from '@/components/ui/spinner';
+import { usePaginationScroll } from '@/hooks/usePaginationScroll';
 import type { Dinosaur } from '@/types/Dinosaur';
 
 type PaginatedDinoGridProps = {
@@ -35,7 +36,8 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
     handlePreviousPage,
     isFirstPage,
     isLastPage,
-  } = usePaginationWithScroll(dinosaurs, itemsPerPage, scrollAreaRef);
+    isChangingPage,
+  } = usePaginationScroll(dinosaurs, itemsPerPage, scrollAreaRef);
 
   const paginationItems = useMemo(() => {
     const items = [];
@@ -74,7 +76,12 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
   }, [currentPage, totalPages]);
 
   return (
-    <div ref={scrollAreaRef}>
+    <div className="relative" ref={scrollAreaRef}>
+      {isChangingPage && (
+        <div className="h-[600px] max-h-[calc(100vh-17rem)] pr-4 flex items-center justify-center">
+          <Spinner />
+        </div>
+      )}
       <DinoGrid dinosaurs={currentItems} />
       {totalPages > 1 && (
         <div className="flex items-center justify-between mt-6">

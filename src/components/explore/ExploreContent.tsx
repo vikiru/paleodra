@@ -2,6 +2,7 @@
 
 import { PaginatedDinoGrid } from '@/components/dinodex/PaginatedDinoGrid';
 import { SearchFilters } from '@/components/explore/SearchFilters';
+import { EmptyResults } from '@/components/search/EmptyResults';
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
 
 export function ExploreContent() {
@@ -19,8 +20,10 @@ export function ExploreContent() {
           </p>
         </div>
         <SearchFilters />
-        {filteredDinosaurs.length > 0 && (
+        {filteredDinosaurs.length > 0 ? (
           <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
+        ) : (
+          <EmptyResults message="No dinosaurs match your search and filter criteria" />
         )}
       </div>
     </div>

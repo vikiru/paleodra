@@ -1,8 +1,10 @@
-import { FilterPanel as FilterPanelComponent } from '@/components/search/FilterPanel';
-import { SearchBar as SearchBarComponent } from '@/components/search/SearchBar';
+import { FilterPanel } from '@/components/search/FilterPanel';
+import { SearchBar } from '@/components/search/SearchBar';
+import { useIsMounted } from '@/hooks/useIsMounted';
 import { useSearchStore } from '@/store/searchStore';
 
 export function SearchFilters() {
+  const isMounted = useIsMounted();
   const {
     searchQuery,
     diet,
@@ -15,15 +17,15 @@ export function SearchFilters() {
 
   return (
     <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <SearchBarComponent
-        disabled={isLoading}
+      <SearchBar
+        disabled={!isMounted}
         onChange={setSearchQuery}
         placeholder="Search for a dinosaur..."
         value={searchQuery}
       />
-      <FilterPanelComponent
+      <FilterPanel
         diet={diet}
-        disabled={isLoading}
+        disabled={!isMounted}
         locomotion={locomotion}
         onDietChange={setDiet}
         onLocomotionChange={setLocomotion}

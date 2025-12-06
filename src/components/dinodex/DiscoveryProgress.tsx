@@ -1,17 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Progress } from '@/components/ui/progress';
 import { useDiscoveryTracking } from '@/hooks/useDiscoveryTracking';
+import { useIsMounted } from '@/hooks/useIsMounted';
 
 export function DiscoveryProgress() {
   const { discoveredCount, totalCount, progressPercentage } =
     useDiscoveryTracking();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useIsMounted();
 
   return (
     <div className="space-y-2">

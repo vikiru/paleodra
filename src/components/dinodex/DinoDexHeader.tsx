@@ -1,15 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useDiscoveryTracking } from '@/hooks/useDiscoveryTracking';
+import { useIsMounted } from '@/hooks/useIsMounted';
 
 export function DinoDexHeader() {
   const { discoveredCount, undiscoveredCount } = useDiscoveryTracking();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useIsMounted();
 
   return (
     <div className="mb-6">
