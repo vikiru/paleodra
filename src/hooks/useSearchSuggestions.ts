@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
-import dinosaurs from '@/data/dinosaurs.json';
+import dinoMetadata from '@/data/dinoMetadata.json';
 import { useStaticSearch } from '@/hooks/useStaticSearch';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 import type { SearchIndex } from '@/types/SearchIndex';
+
+const dinosaursData = dinoMetadata as unknown as DinosaurMetadata[];
 
 type SearchSuggestionData = {
   suggestions: Array<SearchIndex>;
@@ -24,7 +26,7 @@ export function useSearchSuggestions(
 
     try {
       const matchIds = searchDinosaur(query);
-      const matches = (dinosaurs as unknown as Dinosaur[])
+      const matches = dinosaursData
         .filter((dino) => matchIds.includes(dino.id))
         .slice(0, maxSuggestions)
         .map(({ id, name }) => ({ id, name }));

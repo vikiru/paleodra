@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type DinoCardProps = {
-  dino: Dinosaur & { isUndiscovered?: boolean };
+  dino: DinosaurMetadata & { isUndiscovered?: boolean };
 };
 
 export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
@@ -25,7 +25,11 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
           </div>
         ) : (
           <div className="relative w-full h-full overflow-hidden rounded-md">
-            <Image alt={dino.name} fill src={dino.image.imageURL} />
+            {dino.imageURL ? (
+              <Image alt={dino.name} fill src={dino.imageURL} />
+            ) : (
+              <div className="w-full h-full bg-muted/20" />
+            )}
           </div>
         )}
         {!isUndiscovered && (

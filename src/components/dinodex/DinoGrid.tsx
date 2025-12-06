@@ -3,10 +3,10 @@ import { DinoCard } from '@/components/explore/DinoCard';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Spinner } from '@/components/ui/spinner';
 import { useIsMounted } from '@/hooks/useIsMounted';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type DinoGridProps = {
-  dinosaurs: Dinosaur[];
+  dinosaurs: DinosaurMetadata[];
 };
 
 export const DinoGrid = memo(function DinoGrid({ dinosaurs }: DinoGridProps) {
