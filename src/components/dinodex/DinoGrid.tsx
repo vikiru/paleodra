@@ -1,6 +1,8 @@
 import { memo } from 'react';
 import { DinoCard } from '@/components/explore/DinoCard';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Spinner } from '@/components/ui/spinner';
+import { useIsMounted } from '@/hooks/useIsMounted';
 import type { Dinosaur } from '@/types/Dinosaur';
 
 type DinoGridProps = {
@@ -8,6 +10,16 @@ type DinoGridProps = {
 };
 
 export const DinoGrid = memo(function DinoGrid({ dinosaurs }: DinoGridProps) {
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return (
+      <div className="h-[600px] max-h-[calc(100vh-17rem)] pr-4 flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <ScrollArea
       className="h-[600px] max-h-[calc(100vh-17rem)] pr-4 overscroll-contain"
