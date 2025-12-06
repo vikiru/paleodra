@@ -9,7 +9,7 @@ permissions:
   statuses: write
   actions: write
 jobs:
-  prettier-format:
+  format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -21,17 +21,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "lts/*"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - name: Install dependencies
-        run: npm ci
+        run: HUSKY=0 pnpm install --frozen-lockfile # Skip Husky, install from frozen lockfile
       - name: Format files
-        run: npm run format
+        run: pnpm run format
       - name: Check for changes
         id: changes
         run: |
           git add -A
           if git diff --staged --quiet; then
             echo "changes_exist=false" >> "$GITHUB_OUTPUT"
+            exit 0
           else
             echo "changes_exist=true" >> "$GITHUB_OUTPUT"
           fi
@@ -39,8 +44,8 @@ jobs:
         env:
           CHANGES_EXIST: ${{ steps.changes.outputs.changes_exist }}
         run: echo "$CHANGES_EXIST"
-      - name: Commit formatting changes, if any
+      - name: Commit formatting changes via GitHub Actions, if changes exist
         if: steps.changes.outputs.changes_exist == 'true'
-        run: |
-          git commit -m "chore: commit file formatting changes via GitHub Actions"
+        run: |-
+          git commit -m "chore: format files via github actions"
           git push
