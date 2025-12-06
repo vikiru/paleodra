@@ -3,7 +3,6 @@ import { Amaranth, DM_Sans, Gotu } from 'next/font/google';
 import './globals.css';
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
-import ThemeProvider from '@/components/providers/ThemeProvider';
 
 const heading = Gotu({
   weight: '400',
@@ -45,15 +44,9 @@ export default function RootLayout({
       <body
         className={`${heading.variable} ${body.variable} ${logo.variable} flex min-h-screen flex-col bg-oklch(var(--background)) text-oklch(var(--text)) antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main className="flex-1 flex flex-col">{children}</main>
+        <Footer />
       </body>
     </html>
   );
