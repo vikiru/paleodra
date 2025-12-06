@@ -7,21 +7,21 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-type FilterDropdownProps = {
+type FilterDropdownProps<T extends string> = {
+  options: T[];
   value?: string;
   onChange?: (value: string) => void;
-  options: string[];
   placeholder: string;
   allLabel: string;
 };
 
-export function FilterDropdown({
-  value = '',
+export const FilterDropdown = memo(function FilterDropdown({
+  value,
   onChange,
   options,
   placeholder,
   allLabel,
-}: FilterDropdownProps) {
+}: FilterDropdownProps<string>) {
   return (
     <Select onValueChange={onChange} value={value}>
       <SelectTrigger className="w-40">
@@ -29,7 +29,7 @@ export function FilterDropdown({
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="all">{allLabel}</SelectItem>
-        {options.map((option) => (
+        {options.map((option: string) => (
           <SelectItem key={option} value={option}>
             {option.charAt(0).toUpperCase() + option.slice(1)}
           </SelectItem>
@@ -37,6 +37,4 @@ export function FilterDropdown({
       </SelectContent>
     </Select>
   );
-}
-
-export default memo(FilterDropdown);
+});

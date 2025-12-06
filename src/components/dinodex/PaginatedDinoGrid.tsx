@@ -16,9 +16,13 @@ import type { Dinosaur } from '@/types/Dinosaur';
 
 type PaginatedDinoGridProps = {
   dinosaurs: Dinosaur[];
+  itemsPerPage?: number;
 };
 
-export function PaginatedDinoGrid({ dinosaurs }: PaginatedDinoGridProps) {
+export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
+  dinosaurs,
+  itemsPerPage = 50,
+}: PaginatedDinoGridProps) {
   const scrollAreaRef = useRef<HTMLDivElement | null>(null);
 
   const {
@@ -31,7 +35,7 @@ export function PaginatedDinoGrid({ dinosaurs }: PaginatedDinoGridProps) {
     handlePreviousPage,
     isFirstPage,
     isLastPage,
-  } = usePaginationWithScroll(dinosaurs, 50, scrollAreaRef);
+  } = usePaginationWithScroll(dinosaurs, itemsPerPage, scrollAreaRef);
 
   const paginationItems = useMemo(() => {
     const items = [];
@@ -131,6 +135,4 @@ export function PaginatedDinoGrid({ dinosaurs }: PaginatedDinoGridProps) {
       )}
     </div>
   );
-}
-
-export default memo(PaginatedDinoGrid);
+});

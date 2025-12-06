@@ -43,7 +43,11 @@ export default function RootLayout({
       <body
         className={`${heading.variable} ${body.variable} ${logo.variable} flex min-h-screen flex-col bg-oklch(var(--background)) text-oklch(var(--text)) antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+        >
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
           <Footer />

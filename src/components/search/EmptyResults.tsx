@@ -1,26 +1,34 @@
 import { Search } from 'lucide-react';
 import { memo } from 'react';
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '@/components/ui/empty';
 
 type EmptyResultsProps = {
   message?: string;
   className?: string;
 };
 
-export function EmptyResults({
+export const EmptyResults = memo(function EmptyResults({
   message = 'No dinosaurs found for your search criteria',
   className = '',
 }: EmptyResultsProps) {
   return (
-    <div
-      className={`flex flex-col items-center justify-center py-12 text-center ${className}`}
-    >
-      <Search className="h-16 w-16 mb-4" />
-      <h3 className="text-lg font-semibold text-muted-foreground mb-2">
-        No Results Found
-      </h3>
-      <p className="text-sm text-muted-foreground max-w-md">{message}</p>
-    </div>
+    <Empty className={className}>
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <Search className="size-6" />
+        </EmptyMedia>
+      </EmptyHeader>
+      <EmptyContent>
+        <EmptyTitle>No Results Found</EmptyTitle>
+        <EmptyDescription>{message}</EmptyDescription>
+      </EmptyContent>
+    </Empty>
   );
-}
-
-export default memo(EmptyResults);
+});
