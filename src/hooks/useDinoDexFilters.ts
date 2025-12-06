@@ -2,10 +2,10 @@ import { useMemo } from 'react';
 import { useDinosaurFilters } from '@/hooks/useDinosaurFilters';
 import { useDinoStore } from '@/store/dinoStore';
 import { useSearchStore } from '@/store/searchStore';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type DinoDexFilterData = {
-  filteredDinosaurs: (Dinosaur & { isUndiscovered: boolean })[];
+  filteredDinosaurs: (DinosaurMetadata & { isUndiscovered: boolean })[];
   discoveredCount: number;
   undiscoveredCount: number;
   hasActiveFilters: boolean;

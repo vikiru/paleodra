@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import dinosaurs from '@/data/dinosaurs.json';
+import dinoMetadata from '@/data/dinoMetadata.json';
 import { useDinoStore } from '@/store/dinoStore';
-import type { Dinosaur } from '@/types/Dinosaur';
+import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
-const dinosaursData = dinosaurs as unknown as Dinosaur[];
+const dinosaursData = dinoMetadata as unknown as DinosaurMetadata[];
 
 type DiscoveryTrackingData = {
   totalSeenCount: number;

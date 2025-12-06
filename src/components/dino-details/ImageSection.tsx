@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 import type { DinosaurImage } from '@/types/DinosaurImage';
 
 type ImageSectionProps = {
@@ -6,6 +9,12 @@ type ImageSectionProps = {
 };
 
 export function ImageSection({ image }: ImageSectionProps) {
+  const [hasError, setHasError] = useState(false);
+
+  if (!image?.imageURL || hasError) {
+    return null;
+  }
+
   return (
     <section className="mt-12">
       <div className="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
@@ -14,6 +23,7 @@ export function ImageSection({ image }: ImageSectionProps) {
             alt={image?.title || ''}
             fill
             loading="eager"
+            onError={() => setHasError(true)}
             src={image?.imageURL || ''}
           />
         </div>

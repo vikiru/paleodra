@@ -7,7 +7,7 @@ export async function writeData<T>(data: T, fileName: string): Promise<void> {
   try {
     const location = path.join(DATA_DIR, fileName);
     await fs.promises.mkdir(DATA_DIR, { recursive: true });
-    await fs.promises.writeFile(location, JSON.stringify(data, null, 2));
+    await fs.promises.writeFile(location, JSON.stringify(data, null, 0));
     console.log(`Successfully written data to ${location}.`);
   } catch (error) {
     console.error(error);
