@@ -1,7 +1,7 @@
 {
     "name": "paleodra",
     "description": "A dinosaur discovery web application that allows users to explore, learn, and track dinosaur species",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "license": "MIT",
     "author": "Visakan Kirubakaran",
