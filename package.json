@@ -1,10 +1,10 @@
 {
-    "name": "dinoapp",
+    "name": "paleodra",
+    "description": "A dinosaur discovery web application that allows users to explore, learn, and track dinosaur species",
     "version": "0.1.0",
-    "description": "",
-    "author": "Visakan Kirubakaran",
-    "license": "MIT",
     "private": true,
+    "license": "MIT",
+    "author": "Visakan Kirubakaran",
     "scripts": {
         "build": "next build",
         "dev": "next dev --turbopack",
