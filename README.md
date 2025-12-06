@@ -156,6 +156,7 @@ pnpm prebuild
 
 - [FlexSearch](https://github.com/nextapps-de/flexsearch)
 - [Superjson](https://github.com/flightcontrolhq/superjson)
+- [Zod](https://zod.dev/)
 - [Shields Badges](https://github.com/badges/shields)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Favicon Generator](https://favicon.io/favicon-generator/)
