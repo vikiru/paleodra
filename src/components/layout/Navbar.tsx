@@ -30,9 +30,7 @@ export function Navbar() {
                 return (
                   <Link
                     className={
-                      pathname === href
-                        ? 'gradient'
-                        : 'text-muted-foreground'
+                      pathname === href ? 'gradient' : 'text-muted-foreground'
                     }
                     href={href}
                     key={name.toLowerCase()}
