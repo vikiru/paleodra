@@ -10,6 +10,7 @@ import {
 type LocomotionFilterProps = {
   value?: string;
   onChange?: (value: string) => void;
+  className?: string;
   disabled?: boolean;
 };
 
@@ -21,14 +22,15 @@ const LOCOMOTION_OPTIONS = [
   'gliding',
 ];
 
-export function LocomotionFilter({
+export const LocomotionFilter = memo(function LocomotionFilter({
   value = '',
   onChange,
+  className = '',
   disabled = false,
 }: LocomotionFilterProps) {
   return (
     <Select disabled={disabled} onValueChange={onChange} value={value}>
-      <SelectTrigger className="w-40">
+      <SelectTrigger className={`w-40 ${className}`}>
         <SelectValue placeholder="All Locomotion" />
       </SelectTrigger>
       <SelectContent>
@@ -41,6 +43,4 @@ export function LocomotionFilter({
       </SelectContent>
     </Select>
   );
-}
-
-export default memo(LocomotionFilter);
+});

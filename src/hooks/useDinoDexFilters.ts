@@ -4,7 +4,7 @@ import { useDinoStore } from '@/store/dinoStore';
 import { useSearchStore } from '@/store/searchStore';
 import type { Dinosaur } from '@/types/Dinosaur';
 
-type DinoDexFiltersReturn = {
+type DinoDexFilterData = {
   filteredDinosaurs: (Dinosaur & { isUndiscovered: boolean })[];
   discoveredCount: number;
   undiscoveredCount: number;
@@ -12,7 +12,7 @@ type DinoDexFiltersReturn = {
   isLoading: boolean;
 };
 
-export function useDinoDexFilters(): DinoDexFiltersReturn {
+export function useDinoDexFilters(): DinoDexFilterData {
   const { seenIds } = useDinoStore();
   const { filteredDinosaurs: baseFilteredDinosaurs, isLoading } =
     useDinosaurFilters();
