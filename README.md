@@ -57,7 +57,7 @@
 
 ## 🛠️ Tech Stack
 
-- Frontend: [TypeScript](https://www.typescriptlang.org/), [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [Zustand](https://github.com/pmndrs/zustand), [shadcn/ui](https://ui.shadcn.com/), [Lucide React Icons](https://lucide.dev/), [Tailwind CSS](https://tailwindcss.com/)
+- Frontend: [TypeScript](https://www.typescriptlang.org/), [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [Zustand](https://github.com/pmndrs/zustand), [Zod](https://zod.dev/), [shadcn/ui](https://ui.shadcn.com/), [Lucide React Icons](https://lucide.dev/), [Tailwind CSS](https://tailwindcss.com/)
 
 - Backend: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/), [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/)
 
@@ -156,7 +156,6 @@ pnpm prebuild
 
 - [FlexSearch](https://github.com/nextapps-de/flexsearch)
 - [Superjson](https://github.com/flightcontrolhq/superjson)
-- [Zod](https://zod.dev/)
 - [Shields Badges](https://github.com/badges/shields)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Favicon Generator](https://favicon.io/favicon-generator/)
