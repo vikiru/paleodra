@@ -9,7 +9,7 @@ export function ClassificationSection({
   classificationInfo,
 }: ClassificationSectionProps) {
   return (
-    <section id="classification-section" className="space-y-6 mt-12">
+    <section className="space-y-6 mt-12" id="classification-section">
       <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Classification
       </h2>

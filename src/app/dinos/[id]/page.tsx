@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ClassificationSection } from '@/components/dino-details/ClassificationSection';
@@ -7,6 +8,27 @@ import { HeaderSection } from '@/components/dino-details/HeaderSection';
 import { ImageSection } from '@/components/dino-details/ImageSection';
 import { SourceSection } from '@/components/dino-details/SourceSection';
 import { Button } from '@/components/ui/button';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const { id } = await params;
+  const dino = await getDinosaurData(id);
+
+  if (!dino) {
+    return {
+      title: 'Dinosaur Not Found | Paleodra',
+      description: 'The requested dinosaur could not be found.',
+    };
+  }
+
+  return {
+    title: `${dino.name} | Paleodra`,
+    description: `Read more about ${dino.name}.`,
+  };
+}
 
 export async function generateStaticParams() {
   const dinosaurs = await import('@/data/dinosaurs.json');
