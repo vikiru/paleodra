@@ -9,7 +9,6 @@ export function DinoSearchControls() {
     searchQuery,
     diet,
     locomotion,
-    isLoading,
     setSearchQuery,
     setDiet,
     setLocomotion,

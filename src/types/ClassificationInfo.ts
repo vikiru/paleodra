@@ -12,12 +12,12 @@ export type ClassificationInfo = {
   kingdom: string;
   phylum: string;
   clade: string[];
-  classInfo: ClassInfo;
-  orderInfo?: OrderInfo;
-  familyInfo: FamilyInfo;
-  genusInfo: GenusInfo;
-  speciesInfo?: SpeciesInfo;
-  tribeInfo?: TribeInfo;
+  classInfo: ClassInfo[];
+  orderInfo: OrderInfo[];
+  familyInfo: FamilyInfo[];
+  genusInfo: GenusInfo[];
+  speciesInfo: SpeciesInfo[];
+  tribeInfo: TribeInfo[];
   superphylum?: string;
   branch?: string;
 };

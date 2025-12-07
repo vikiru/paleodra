@@ -16,7 +16,7 @@ type DiscoveryTrackingData = {
 };
 
 export function useDiscoveryTracking(): DiscoveryTrackingData {
-  const { seenIds, getAllSeenIds, markAsSeen } = useDinoStore();
+  const { seenIds, markAsSeen } = useDinoStore();
 
   const totalCount = dinosaursData.length;
   const discoveredCount = useMemo(() => {
