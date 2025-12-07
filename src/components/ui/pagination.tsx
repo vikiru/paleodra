@@ -24,7 +24,7 @@ function PaginationContent({
 }: React.ComponentProps<'ul'>) {
   return (
     <ul
-      className={cn('flex flex-row items-center gap-1', className)}
+      className={cn('flex flex-row items-center gap-1 flex-wrap', className)}
       data-slot="pagination-content"
       {...props}
     />
@@ -104,11 +104,14 @@ function PaginationEllipsis({
   return (
     <span
       aria-hidden
-      className={cn('flex size-9 items-center justify-center', className)}
+      className={cn(
+        'flex size-7 sm:size-9 items-center justify-center',
+        className,
+      )}
       data-slot="pagination-ellipsis"
       {...props}
     >
-      <MoreHorizontalIcon className="size-4" />
+      <MoreHorizontalIcon className="size-3 sm:size-4" />
       <span className="sr-only">More pages</span>
     </span>
   );

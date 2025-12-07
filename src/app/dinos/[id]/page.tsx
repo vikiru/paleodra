@@ -35,7 +35,7 @@ export default async function DinoPage({ params }: { params: { id: string } }) {
       <div className="w-full px-4 py-8 sm:px-6 lg:px-8 sm:py-12">
         <div className="w-full">
           <Button asChild className="mb-8" variant="ghost">
-            <Link href="/dino-dex">← Back to DinoDex</Link>
+            <Link href="/dinodex">← Back to DinoDex</Link>
           </Button>
         </div>
 
