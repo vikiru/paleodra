@@ -1,13 +1,19 @@
 import { useMemo } from 'react';
 import type { ClassificationInfo } from '@/types/ClassificationInfo';
-import type {
-  ClassInfo,
-  FamilyInfo,
-  GenusInfo,
-  OrderInfo,
-  SpeciesInfo,
-  TribeInfo,
-} from '@/types/Info';
+
+const CLASSIFICATION_ORDER = [
+  { key: 'domain', label: 'Domain' },
+  { key: 'kingdom', label: 'Kingdom' },
+  { key: 'superphylum', label: 'Superphylum' },
+  { key: 'phylum', label: 'Phylum' },
+  { key: 'classInfo', label: 'Class' },
+  { key: 'clade', label: 'Clade' },
+  { key: 'orderInfo', label: 'Order' },
+  { key: 'familyInfo', label: 'Family' },
+  { key: 'tribeInfo', label: 'Tribe' },
+  { key: 'genusInfo', label: 'Genus' },
+  { key: 'speciesInfo', label: 'Species' },
+] as const;
 
 type ClassificationItem = {
   label: string;
@@ -24,75 +30,33 @@ export function useClassificationTable(
   const items = useMemo(() => {
     const result: ClassificationItem[] = [];
 
-    Object.entries(classificationInfo).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        if (key === 'clade') {
-          result.push({
-            label: 'Clade',
-            value: value.join(', ') || '',
+    CLASSIFICATION_ORDER.forEach(({ key, label }) => {
+      if (key === 'clade') {
+        if (classificationInfo.clade.length > 0) {
+          classificationInfo.clade.forEach((cladeName) => {
+            result.push({
+              label: 'Clade',
+              value: cladeName,
+            });
           });
         }
-      } else if (value && typeof value === 'object' && 'value' in value) {
-        switch (key) {
-          case 'classInfo': {
-            const classInfo = value as unknown as ClassInfo;
-            result.push({
-              label: classInfo[0].classType,
-              value: classInfo[0].value,
-            });
-            break;
-          }
-          case 'orderInfo': {
-            const orderInfo = value as unknown as OrderInfo;
-            result.push({
-              label: orderInfo[0].orderType,
-              value: orderInfo[0].value,
-            });
-            break;
-          }
-          case 'familyInfo': {
-            const familyInfo = value as unknown as FamilyInfo;
-            result.push({
-              label: familyInfo[0].familyType,
-              value: familyInfo[0].value,
-            });
-            break;
-          }
-          case 'tribeInfo': {
-            const tribeInfo = value as unknown as TribeInfo;
-            result.push({
-              label: tribeInfo[0].tribeType,
-              value: tribeInfo[0].value,
-            });
-            break;
-          }
-          case 'genusInfo': {
-            const genusInfo = value as unknown as GenusInfo;
-            result.push({
-              label: genusInfo[0].genusType,
-              value: genusInfo[0].value,
-            });
-            break;
-          }
-          case 'speciesInfo': {
-            const speciesInfo = value as unknown as SpeciesInfo;
-            result.push({
-              label: speciesInfo[0].speciesType,
-              value: speciesInfo[0].value,
-            });
-            break;
-          }
-          default:
-            return;
+      } else if (key === 'domain' || key === 'kingdom' || key === 'superphylum' || key === 'phylum') {
+        const data = classificationInfo[key];
+        if (data) {
+          result.push({
+            label,
+            value: data,
+          });
         }
-      } else if (value && typeof value === 'string') {
-        if (key === 'domain') return;
-
-        const label = key.charAt(0).toUpperCase() + key.slice(1);
-        result.push({
-          label,
-          value,
-        });
+      } else {
+        const data = classificationInfo[key];
+        if (data && data.length > 0 && data[0]?.value) {
+          const typeKey = `${key.replace('Info', 'Type')}` as keyof typeof data[0];
+          result.push({
+            label: data[0][typeKey] as string,
+            value: data[0].value,
+          });
+        }
       }
     });
 
