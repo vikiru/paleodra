@@ -45,7 +45,9 @@ export default function RootLayout({
         className={`${heading.variable} ${body.variable} ${logo.variable} flex min-h-screen flex-col bg-oklch(var(--background)) text-oklch(var(--text)) antialiased`}
       >
         <Navbar />
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main className="flex-1 flex flex-col" suppressHydrationWarning>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

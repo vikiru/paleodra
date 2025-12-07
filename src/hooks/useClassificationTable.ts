@@ -40,7 +40,12 @@ export function useClassificationTable(
             });
           });
         }
-      } else if (key === 'domain' || key === 'kingdom' || key === 'superphylum' || key === 'phylum') {
+      } else if (
+        key === 'domain' ||
+        key === 'kingdom' ||
+        key === 'superphylum' ||
+        key === 'phylum'
+      ) {
         const data = classificationInfo[key];
         if (data) {
           result.push({
@@ -51,7 +56,8 @@ export function useClassificationTable(
       } else {
         const data = classificationInfo[key];
         if (data && data.length > 0 && data[0]?.value) {
-          const typeKey = `${key.replace('Info', 'Type')}` as keyof typeof data[0];
+          const typeKey =
+            `${key.replace('Info', 'Type')}` as keyof (typeof data)[0];
           result.push({
             label: data[0][typeKey] as string,
             value: data[0].value,

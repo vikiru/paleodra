@@ -84,14 +84,14 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
       )}
       <DinoGrid dinosaurs={currentItems} />
       {totalPages > 1 && (
-        <div className="flex items-center justify-between mt-6">
-          <div className="text-gray-500 text-sm dark:text-gray-400 whitespace-nowrap">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-6">
+          <div className="text-gray-500 text-sm dark:text-gray-400 whitespace-nowrap px-2 sm:px-0">
             Showing {startIndex + 1}-{startIndex + currentItems.length} of{' '}
             {dinosaurs.length} dinosaurs
           </div>
-          <div className="ml-auto">
+          <div className="overflow-x-auto">
             <Pagination>
-              <PaginationContent>
+              <PaginationContent className="flex-wrap justify-center lg:justify-start">
                 <PaginationItem>
                   <PaginationPrevious
                     className={
@@ -115,7 +115,7 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
                       <PaginationEllipsis />
                     ) : (
                       <PaginationLink
-                        className="cursor-pointer"
+                        className="cursor-pointer text-xs sm:text-sm min-w-8 sm:min-w-10"
                         isActive={currentPage === value}
                         onClick={() => handlePageChange(value as number)}
                       >

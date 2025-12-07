@@ -64,9 +64,9 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
             </Link>
           )}
         </CardTitle>
-        <CardDescription className="text-xs text-muted-foreground sm:text-sm capitalize">
-          <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4 inline" />
-          <span className="truncate">
+        <CardDescription className="text-xs text-muted-foreground sm:text-sm capitalize flex items-center">
+          <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4" />
+          <span className="truncate block">
             {isUndiscovered || dino.temporalRange === 'Unknown'
               ? 'Unknown Era'
               : dino.temporalRange || 'Unknown'}
@@ -76,20 +76,24 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
 
       {/* Badges */}
       <CardContent className="px-4 pt-0">
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="flex items-start gap-1.5 sm:gap-2">
           <Badge
-            className="capitalize"
+            className="capitalize shrink-0"
             variant={isUndiscovered ? 'outline' : 'default'}
           >
             <Utensils className="mr-1.5 h-3 w-3" />
-            {isUndiscovered ? 'Unknown' : dino.diet}
+            <span className="truncate max-w-20 sm:max-w-none">
+              {isUndiscovered ? 'Unknown' : dino.diet}
+            </span>
           </Badge>
           <Badge
-            className="capitalize"
+            className="capitalize shrink-0"
             variant={isUndiscovered ? 'outline' : 'secondary'}
           >
             <Footprints className="mr-1.5 h-3 w-3" />
-            {isUndiscovered ? 'Unknown' : dino.locomotionType}
+            <span className="truncate max-w-20 sm:max-w-none">
+              {isUndiscovered ? 'Unknown' : dino.locomotionType}
+            </span>
           </Badge>
         </div>
       </CardContent>

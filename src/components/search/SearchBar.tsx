@@ -2,6 +2,7 @@
 
 import { Search, X } from 'lucide-react';
 import { memo } from 'react';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSearchSuggestions } from '@/hooks/useSearchSuggestions';
 import type { SearchIndex } from '@/types/SearchIndex';
@@ -52,23 +53,26 @@ export const SearchBar = memo(function SearchBar({
         value={value}
       />
       {value && onChange && (
-        <button
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md hover:bg-muted-foreground/20 transition-colors"
+        <Button
+          className="absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 p-0"
           onClick={() => onChange('')}
+          size="icon"
+          variant="ghost"
         >
-          <X className="h-4 w-4 text-muted-foreground" />
-        </button>
+          <X className="h-4 w-4" />
+        </Button>
       )}
       {showSuggestions && showLocalSuggestions && suggestions.length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-1 bg-background border border-border rounded-md shadow-lg z-50 max-h-48 overflow-y-auto">
           {suggestions.map((suggestion) => (
-            <button
-              className="w-full text-left px-3 py-2 hover:bg-muted transition-colors text-sm"
+            <Button
+              className="w-full justify-start h-auto py-2 px-3 text-sm"
               key={suggestion.id}
               onClick={() => handleSuggestionClick(suggestion)}
+              variant="ghost"
             >
               {suggestion.name}
-            </button>
+            </Button>
           ))}
         </div>
       )}
