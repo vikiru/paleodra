@@ -15,7 +15,7 @@ export function SearchFilters() {
   } = useSearchStore();
 
   return (
-    <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <section id="search-filters" className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <SearchBar
         disabled={!isMounted}
         onChange={setSearchQuery}
@@ -29,6 +29,6 @@ export function SearchFilters() {
         onDietChange={setDiet}
         onLocomotionChange={setLocomotion}
       />
-    </div>
+    </section>
   );
 }

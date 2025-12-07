@@ -16,7 +16,7 @@ export function ImageSection({ image }: ImageSectionProps) {
   }
 
   return (
-    <section className="mt-12">
+    <section id="image-section" className="mt-12">
       <div className="overflow-hidden rounded-xl bg-white shadow-lg dark:bg-gray-800">
         <div className="relative w-full max-w-full aspect-video max-h-120">
           <Image

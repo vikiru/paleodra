@@ -4,7 +4,7 @@ type DescriptionSectionProps = {
 
 export function DescriptionSection({ description }: DescriptionSectionProps) {
   return (
-    <section className="prose prose-gray max-w-none space-y-6 dark:prose-invert dark:prose-headings:text-white mt-12">
+    <section id="description-section" className="prose prose-gray max-w-none space-y-6 dark:prose-invert dark:prose-headings:text-white mt-12">
       <div>
         <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Description
