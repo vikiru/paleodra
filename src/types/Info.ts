@@ -8,29 +8,29 @@ export type SpeciesType = 'Species' | string;
 export type ClassInfo = {
   classType: ClassType;
   value: string;
-}[];
+};
 
 export type FamilyInfo = {
   familyType: FamilyType;
   value: string;
-}[];
+};
 
 export type TribeInfo = {
   tribeType: TribeType;
   value: string;
-}[];
+};
 
 export type OrderInfo = {
   orderType: OrderType;
   value: string;
-}[];
+};
 
 export type GenusInfo = {
   genusType: GenusType;
   value: string;
-}[];
+};
 
 export type SpeciesInfo = {
   speciesType: SpeciesType;
   value: string;
-}[];
+};

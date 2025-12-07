@@ -9,7 +9,6 @@ export function SearchFilters() {
     searchQuery,
     diet,
     locomotion,
-    isLoading,
     setSearchQuery,
     setDiet,
     setLocomotion,

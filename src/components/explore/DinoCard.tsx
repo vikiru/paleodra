@@ -3,7 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type DinoCardProps = {
@@ -15,32 +21,38 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
 
   return (
     <Card
-      className={`group relative overflow-hidden border-border/10 bg-background/30 ${isUndiscovered ? 'opacity-75' : ''}`}
+      className={`group relative overflow-hidden border-border/10 bg-background/30 ${isUndiscovered ? 'opacity-75' : ''} pt-0`}
     >
       {/* Image Section */}
-      <div className="aspect-video w-full">
-        {isUndiscovered ? (
-          <div className="flex h-full w-full items-center justify-center bg-muted/50">
-            <HelpCircle className="h-16 w-16 text-muted-foreground/50" />
-          </div>
-        ) : (
-          <div className="relative w-full h-full overflow-hidden rounded-md">
-            {dino.imageURL ? (
-              <Image alt={dino.name} fill src={dino.imageURL} />
-            ) : (
-              <div className="w-full h-full bg-muted/20" />
-            )}
-          </div>
-        )}
+      <CardContent className="px-0">
+        <div className="aspect-video w-full">
+          {isUndiscovered ? (
+            <div className="flex h-full w-full items-center justify-center bg-muted/50">
+              <HelpCircle className="h-16 w-16 text-muted-foreground/50" />
+            </div>
+          ) : (
+            <div className="relative w-full h-full">
+              {dino.imageURL ? (
+                <Image
+                  alt={dino.name}
+                  className="rounded-t-xl object-fit"
+                  fill
+                  src={dino.imageURL}
+                />
+              ) : (
+                <div className="w-full h-full bg-muted/20 rounded-t-xl" />
+              )}
+            </div>
+          )}
+        </div>
         {!isUndiscovered && (
           <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/30 to-transparent opacity-0" />
         )}
-      </div>
+      </CardContent>
 
       {/* Content Section */}
-      <CardContent className="p-4 sm:p-5">
-        {/* Name */}
-        <h3 className="text-lg font-heading font-bold leading-tight sm:text-xl">
+      <CardHeader className="px-4 pb-2">
+        <CardTitle className="text-lg font-heading font-bold leading-tight sm:text-xl">
           {isUndiscovered ? (
             <span className="text-muted-foreground">Undiscovered Species</span>
           ) : (
@@ -51,19 +63,20 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
               {dino.name}
             </Link>
           )}
-        </h3>
-
-        {/* Metadata */}
-
-        <div className="mt-2 flex items-center text-xs text-muted-foreground sm:text-sm capitalize">
-          <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4" />
+        </CardTitle>
+        <CardDescription className="text-xs text-muted-foreground sm:text-sm capitalize">
+          <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4 inline" />
           <span className="truncate">
             {isUndiscovered || dino.temporalRange === 'Unknown'
               ? 'Unknown Era'
               : dino.temporalRange || 'Unknown'}
           </span>
-        </div>
-        <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
+        </CardDescription>
+      </CardHeader>
+
+      {/* Badges */}
+      <CardContent className="px-4 pt-0">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
           <Badge
             className="capitalize"
             variant={isUndiscovered ? 'outline' : 'default'}
