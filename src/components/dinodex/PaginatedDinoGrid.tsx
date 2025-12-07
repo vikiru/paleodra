@@ -89,7 +89,7 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
             Showing {startIndex + 1}-{startIndex + currentItems.length} of{' '}
             {dinosaurs.length} dinosaurs
           </div>
-          <div id="pagination-controls" className="overflow-x-auto">
+          <div className="overflow-x-auto" id="pagination-controls">
             <Pagination>
               <PaginationContent className="flex-wrap justify-center lg:justify-start">
                 <PaginationItem>

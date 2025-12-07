@@ -15,7 +15,10 @@ export function DinoSearchControls() {
   } = useSearchStore();
 
   return (
-    <section id="search-controls" className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <section
+      className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+      id="search-controls"
+    >
       <SearchBar
         disabled={!isMounted}
         onChange={setSearchQuery}
