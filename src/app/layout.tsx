@@ -41,8 +41,60 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          href="/favicon-light.ico"
+          media="(prefers-color-scheme: light)"
+          rel="icon"
+        />
+        <link
+          href="/favicon-dark.ico"
+          media="(prefers-color-scheme: dark)"
+          rel="icon"
+        />
+        <link
+          href="/apple-touch-icon-light.png"
+          media="(prefers-color-scheme: light)"
+          rel="apple-touch-icon"
+          sizes="180x180"
+        />
+        <link
+          href="/apple-touch-icon-dark.png"
+          media="(prefers-color-scheme: dark)"
+          rel="apple-touch-icon"
+          sizes="180x180"
+        />
+        <link
+          href="/favicon-32x32-light.png"
+          media="(prefers-color-scheme: light)"
+          rel="icon"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          href="/favicon-32x32-dark.png"
+          media="(prefers-color-scheme: dark)"
+          rel="icon"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          href="/favicon-16x16-light.png"
+          media="(prefers-color-scheme: light)"
+          rel="icon"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          href="/favicon-16x16-dark.png"
+          media="(prefers-color-scheme: dark)"
+          rel="icon"
+          sizes="16x16"
+          type="image/png"
+        />
+      </head>
       <body
-        className={`${heading.variable} ${body.variable} ${logo.variable} flex min-h-screen flex-col bg-oklch(var(--background)) text-oklch(var(--text)) antialiased`}
+        className={`antialiased ${heading.variable} ${body.variable} ${logo.variable} flex min-h-screen flex-col bg-oklch(var(--background)) text-oklch(var(--text)) antialiased`}
       >
         <Navbar />
         <main className="flex-1 flex flex-col" suppressHydrationWarning>
