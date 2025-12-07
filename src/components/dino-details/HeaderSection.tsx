@@ -7,7 +7,7 @@ type HeaderSectionProps = {
 
 export function HeaderSection({ dino }: HeaderSectionProps) {
   return (
-    <section className="space-y-4">
+    <section id="header-section" className="space-y-4">
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
         {dino.name}
       </h1>

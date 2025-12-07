@@ -6,7 +6,7 @@ type SourceSectionProps = {
 
 export function SourceSection({ source }: SourceSectionProps) {
   return (
-    <section className="space-y-6 rounded-xl bg-gray-50 p-6 dark:bg-gray-800/50 mt-12">
+    <section id="source-section" className="space-y-6 rounded-xl bg-gray-50 p-6 dark:bg-gray-800/50 mt-12">
       <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
         Source & Attribution
       </h2>
