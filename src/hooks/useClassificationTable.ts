@@ -32,7 +32,7 @@ export function useClassificationTable(
 
     CLASSIFICATION_ORDER.forEach(({ key, label }) => {
       if (key === 'clade') {
-        if (classificationInfo.clade.length > 0) {
+        if (Array.isArray(classificationInfo.clade) && classificationInfo.clade.length > 0) {
           classificationInfo.clade.forEach((cladeName) => {
             result.push({
               label: 'Clade',
@@ -55,12 +55,16 @@ export function useClassificationTable(
         }
       } else {
         const data = classificationInfo[key];
-        if (data && data.length > 0 && data[0]?.value) {
-          const typeKey =
-            `${key.replace('Info', 'Type')}` as keyof (typeof data)[0];
-          result.push({
-            label: data[0][typeKey] as string,
-            value: data[0].value,
+        if (data && data.length > 0) {
+          data.forEach((item) => {
+            if (item?.value) {
+              const typeKey = (key.replace('Info', 'Type')) as
+                keyof Omit<typeof item, 'value'>;
+              result.push({
+                label: item[typeKey] as string,
+                value: item.value,
+              });
+            }
           });
         }
       }
