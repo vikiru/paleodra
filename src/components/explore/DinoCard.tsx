@@ -64,9 +64,9 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
             </Link>
           )}
         </CardTitle>
-        <CardDescription className="text-xs text-muted-foreground sm:text-sm capitalize flex items-center">
-          <Clock className="mr-1.5 h-3 w-3 shrink-0 sm:h-4 sm:w-4" />
-          <span className="truncate block">
+        <CardDescription className="text-xs text-muted-foreground sm:text-xs capitalize flex items-center">
+          <Clock className="mr-1 h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" />
+          <span>
             {isUndiscovered || dino.temporalRange === 'Unknown'
               ? 'Unknown Era'
               : dino.temporalRange || 'Unknown'}
