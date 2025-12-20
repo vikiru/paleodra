@@ -140,10 +140,10 @@ pnpm format
 pnpm typecheck
 ```
 
-7. Prepare Git hooks via [Husky](https://typicode.github.io/husky/#/).
+7. Prepare Git hooks via [Lefthook](https://github.com/evilmartians/lefthook).
 
 ```bash
-pnpm prepare
+pnpm postinstall
 ```
 
 8. Run the data fetching script to populate local data JSON files (these will be stored in `src/data/`).
@@ -152,10 +152,18 @@ pnpm prepare
 pnpm prebuild
 ```
 
+9. Check unused dependencies and files with [Knip](https://github.com/webpro-nl/knip).
+
+```bash
+pnpm unused
+```
+
 ## ✨ Acknowledgments
 
 - [FlexSearch](https://github.com/nextapps-de/flexsearch)
 - [Superjson](https://github.com/flightcontrolhq/superjson)
+- [Lefthook](https://github.com/evilmartians/lefthook)
+- [Knip](https://github.com/webpro-nl/knip)
 - [Shields Badges](https://github.com/badges/shields)
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Favicon Generator](https://favicon.io/favicon-generator/)
