@@ -8,9 +8,7 @@ type HeaderSectionProps = {
 export function HeaderSection({ dino }: HeaderSectionProps) {
   return (
     <section className="space-y-4" id="header-section">
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-        {dino.name}
-      </h1>
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">{dino.name}</h1>
       <div className="flex flex-wrap items-center gap-2">
         <span className="inline-flex items-center rounded-full bg-background px-3 py-1.5 text-sm font-medium ring-1 ring-border capitalize">
           <Utensils className="mr-1.5 h-4 w-4" />

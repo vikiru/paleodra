@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/utils/cn';
 
@@ -22,13 +22,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>) {
 }
 
 function BreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>) {
-  return (
-    <li
-      className={cn('inline-flex items-center gap-1.5', className)}
-      data-slot="breadcrumb-item"
-      {...props}
-    />
-  );
+  return <li className={cn('inline-flex items-center gap-1.5', className)} data-slot="breadcrumb-item" {...props} />;
 }
 
 function BreadcrumbLink({
@@ -42,10 +36,7 @@ function BreadcrumbLink({
 
   return (
     <Comp
-      className={cn(
-        'hover:text-neutral-950 transition-colors dark:hover:text-neutral-50',
-        className,
-      )}
+      className={cn('hover:text-neutral-950 transition-colors dark:hover:text-neutral-50', className)}
       data-slot="breadcrumb-link"
       {...props}
     />
@@ -57,10 +48,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
     <span
       aria-current="page"
       aria-disabled="true"
-      className={cn(
-        'text-neutral-950 font-normal dark:text-neutral-50',
-        className,
-      )}
+      className={cn('text-neutral-950 font-normal dark:text-neutral-50', className)}
       data-slot="breadcrumb-page"
       role="link"
       {...props}
@@ -68,11 +56,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
   );
 }
 
-function BreadcrumbSeparator({
-  children,
-  className,
-  ...props
-}: React.ComponentProps<'li'>) {
+function BreadcrumbSeparator({ children, className, ...props }: React.ComponentProps<'li'>) {
   return (
     <li
       aria-hidden="true"
@@ -86,10 +70,7 @@ function BreadcrumbSeparator({
   );
 }
 
-function BreadcrumbEllipsis({
-  className,
-  ...props
-}: React.ComponentProps<'span'>) {
+function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       aria-hidden="true"

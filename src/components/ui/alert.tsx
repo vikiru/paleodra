@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/utils/cn';
 
@@ -8,8 +8,7 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'bg-white text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50',
+        default: 'bg-white text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50',
         destructive:
           'text-red-500 bg-white [&>svg]:text-current *:data-[slot=alert-description]:text-red-500/90 dark:text-red-900 dark:bg-neutral-950 dark:*:data-[slot=alert-description]:text-red-900/90',
       },
@@ -20,38 +19,21 @@ const alertVariants = cva(
   },
 );
 
-function Alert({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
-  return (
-    <div
-      className={cn(alertVariants({ variant }), className)}
-      data-slot="alert"
-      role="alert"
-      {...props}
-    />
-  );
+function Alert({ className, variant, ...props }: React.ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
+  return <div className={cn(alertVariants({ variant }), className)} data-slot="alert" role="alert" {...props} />;
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn(
-        'col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight',
-        className,
-      )}
+      className={cn('col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight', className)}
       data-slot="alert-title"
       {...props}
     />
   );
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function AlertDescription({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(

@@ -14,28 +14,13 @@ export type PaginationData<T> = {
   resetToFirstPage: () => void;
 };
 
-export function usePagination<T>(
-  items: T[],
-  itemsPerPage: number = 50,
-): PaginationData<T> {
+export function usePagination<T>(items: T[], itemsPerPage: number = 50): PaginationData<T> {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = useMemo(
-    () => Math.ceil(items.length / itemsPerPage),
-    [items.length, itemsPerPage],
-  );
-  const startIndex = useMemo(
-    () => (currentPage - 1) * itemsPerPage,
-    [currentPage, itemsPerPage],
-  );
-  const endIndex = useMemo(
-    () => startIndex + itemsPerPage,
-    [startIndex, itemsPerPage],
-  );
-  const currentItems = useMemo(
-    () => items.slice(startIndex, endIndex),
-    [items, startIndex, endIndex],
-  );
+  const totalPages = useMemo(() => Math.ceil(items.length / itemsPerPage), [items.length, itemsPerPage]);
+  const startIndex = useMemo(() => (currentPage - 1) * itemsPerPage, [currentPage, itemsPerPage]);
+  const endIndex = useMemo(() => startIndex + itemsPerPage, [startIndex, itemsPerPage]);
+  const currentItems = useMemo(() => items.slice(startIndex, endIndex), [items, startIndex, endIndex]);
 
   const goToPage = useCallback(
     (page: number) => {
@@ -59,10 +44,7 @@ export function usePagination<T>(
   }, []);
 
   const isFirstPage = useMemo(() => currentPage === 1, [currentPage]);
-  const isLastPage = useMemo(
-    () => currentPage === totalPages,
-    [currentPage, totalPages],
-  );
+  const isLastPage = useMemo(() => currentPage === totalPages, [currentPage, totalPages]);
 
   return {
     currentPage,

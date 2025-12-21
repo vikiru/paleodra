@@ -9,13 +9,9 @@ export function DescriptionSection({ description }: DescriptionSectionProps) {
       id="description-section"
     >
       <div>
-        <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Description
-        </h2>
+        <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Description</h2>
         <div className="prose prose-gray max-w-none dark:prose-invert">
-          <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-            {description}
-          </p>
+          <p className="leading-relaxed text-gray-700 dark:text-gray-300">{description}</p>
         </div>
       </div>
     </section>

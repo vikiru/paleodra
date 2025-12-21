@@ -21,9 +21,7 @@ export async function pingApi(): Promise<Response> {
     response = await fetch(API_ENDPOINT);
 
     if (!response.ok) {
-      console.error(
-        `Retry failed with status ${response.status}. API might not be fully operational.`,
-      );
+      console.error(`Retry failed with status ${response.status}. API might not be fully operational.`);
     } else {
       console.log('Successfully pinged API on retry, it is up and running.');
     }

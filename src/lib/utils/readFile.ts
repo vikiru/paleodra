@@ -7,9 +7,7 @@ export async function checkFileExists(fileName: string): Promise<boolean> {
     await fs.promises.access(filePath, fs.constants.F_OK);
     return true;
   } catch (error) {
-    console.error(
-      `An error occured while trying to check if the file exists, ${error}`,
-    );
+    console.error(`An error occured while trying to check if the file exists, ${error}`);
     return false;
   }
 }

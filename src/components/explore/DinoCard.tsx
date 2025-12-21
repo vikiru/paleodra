@@ -3,13 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 import { Badge } from '@/components/ui/badge';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import type { DinosaurMetadata } from '@/types/DinosaurMetadata';
 
 type DinoCardProps = {
@@ -33,12 +27,7 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
           ) : (
             <div className="relative w-full h-full">
               {dino.imageURL ? (
-                <Image
-                  alt={dino.name}
-                  className="rounded-t-xl object-fit"
-                  fill
-                  src={dino.imageURL}
-                />
+                <Image alt={dino.name} className="rounded-t-xl object-fit" fill src={dino.imageURL} />
               ) : (
                 <div className="w-full h-full bg-muted/20 rounded-t-xl" />
               )}
@@ -67,9 +56,7 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
         <CardDescription className="text-xs text-muted-foreground sm:text-xs capitalize flex items-center">
           <Clock className="mr-1 h-2.5 w-2.5 shrink-0 sm:h-3 sm:w-3" />
           <span>
-            {isUndiscovered || dino.temporalRange === 'Unknown'
-              ? 'Unknown Era'
-              : dino.temporalRange || 'Unknown'}
+            {isUndiscovered || dino.temporalRange === 'Unknown' ? 'Unknown Era' : dino.temporalRange || 'Unknown'}
           </span>
         </CardDescription>
       </CardHeader>
@@ -77,23 +64,13 @@ export const DinoCard = memo(function DinoCard({ dino }: DinoCardProps) {
       {/* Badges */}
       <CardContent className="px-4 pt-0">
         <div className="flex items-start gap-1.5 sm:gap-2">
-          <Badge
-            className="capitalize shrink-0"
-            variant={isUndiscovered ? 'outline' : 'default'}
-          >
+          <Badge className="capitalize shrink-0" variant={isUndiscovered ? 'outline' : 'default'}>
             <Utensils className="mr-1.5 h-3 w-3" />
-            <span className="truncate max-w-20 sm:max-w-none">
-              {isUndiscovered ? 'Unknown' : dino.diet}
-            </span>
+            <span className="truncate max-w-20 sm:max-w-none">{isUndiscovered ? 'Unknown' : dino.diet}</span>
           </Badge>
-          <Badge
-            className="capitalize shrink-0"
-            variant={isUndiscovered ? 'outline' : 'secondary'}
-          >
+          <Badge className="capitalize shrink-0" variant={isUndiscovered ? 'outline' : 'secondary'}>
             <Footprints className="mr-1.5 h-3 w-3" />
-            <span className="truncate max-w-20 sm:max-w-none">
-              {isUndiscovered ? 'Unknown' : dino.locomotionType}
-            </span>
+            <span className="truncate max-w-20 sm:max-w-none">{isUndiscovered ? 'Unknown' : dino.locomotionType}</span>
           </Badge>
         </div>
       </CardContent>

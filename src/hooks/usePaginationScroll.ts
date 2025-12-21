@@ -19,9 +19,7 @@ export function usePaginationScroll<T>(
 
   const scrollToTop = useCallback(() => {
     if (scrollAreaRef?.current) {
-      const viewport = scrollAreaRef.current.querySelector(
-        '[data-radix-scroll-area-viewport]',
-      ) as HTMLElement;
+      const viewport = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]') as HTMLElement;
       if (viewport) {
         viewport.scrollTo({ top: 0, behavior: 'smooth' });
       }

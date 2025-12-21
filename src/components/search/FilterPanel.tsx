@@ -24,11 +24,7 @@ export const FilterPanel = memo(function FilterPanel({
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
       <DietFilter disabled={disabled} onChange={onDietChange} value={diet} />
-      <LocomotionFilter
-        disabled={disabled}
-        onChange={onLocomotionChange}
-        value={locomotion}
-      />
+      <LocomotionFilter disabled={disabled} onChange={onLocomotionChange} value={locomotion} />
     </div>
   );
 });

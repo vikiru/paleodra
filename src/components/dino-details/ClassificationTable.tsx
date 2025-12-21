@@ -6,9 +6,7 @@ type ClassificationTableProps = {
   classificationInfo: ClassificationInfo;
 };
 
-export const ClassificationTable = memo(function ClassificationTable({
-  classificationInfo,
-}: ClassificationTableProps) {
+export const ClassificationTable = memo(function ClassificationTable({ classificationInfo }: ClassificationTableProps) {
   const { items } = useClassificationTable(classificationInfo);
 
   return (
@@ -27,8 +25,7 @@ export const ClassificationTable = memo(function ClassificationTable({
               {item.label}
             </div>
             <div className="col-span-2 px-4 py-3.5 text-sm font-medium text-gray-900 dark:text-gray-50 sm:px-6">
-              {item.label.toLowerCase().includes('genus') ||
-              item.label.toLowerCase().includes('species') ? (
+              {item.label.toLowerCase().includes('genus') || item.label.toLowerCase().includes('species') ? (
                 <span className="italic">{item.value}</span>
               ) : (
                 item.value

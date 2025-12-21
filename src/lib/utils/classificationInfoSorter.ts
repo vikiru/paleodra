@@ -1,21 +1,10 @@
-import type {
-  ClassInfo,
-  FamilyInfo,
-  GenusInfo,
-  OrderInfo,
-  SpeciesInfo,
-  TribeInfo,
-} from '@/types/Info';
+import type { ClassInfo, FamilyInfo, GenusInfo, OrderInfo, SpeciesInfo, TribeInfo } from '@/types/Info';
 
-export function sortInfo<
-  T extends
-    | ClassInfo
-    | FamilyInfo
-    | TribeInfo
-    | OrderInfo
-    | GenusInfo
-    | SpeciesInfo,
->(infoArray: T[], sortOrder: string[], typeField: keyof T): T[] {
+export function sortInfo<T extends ClassInfo | FamilyInfo | TribeInfo | OrderInfo | GenusInfo | SpeciesInfo>(
+  infoArray: T[],
+  sortOrder: string[],
+  typeField: keyof T,
+): T[] {
   return infoArray.sort((a, b) => {
     const aType = a[typeField] as string;
     const bType = b[typeField] as string;
@@ -24,27 +13,11 @@ export function sortInfo<
 }
 
 export function getClassSorter(): string[] {
-  return [
-    'Superclass',
-    'Class',
-    'Subclass',
-    'Infraclass',
-    'Subterclass',
-    'Parvclass',
-  ];
+  return ['Superclass', 'Class', 'Subclass', 'Infraclass', 'Subterclass', 'Parvclass'];
 }
 
 export function getOrderSorter(): string[] {
-  return [
-    'Magnorder',
-    'Superorder',
-    'Grandorder',
-    'Mirorder',
-    'Order',
-    'Suborder',
-    'Infraorder',
-    'Parvorder',
-  ];
+  return ['Magnorder', 'Superorder', 'Grandorder', 'Mirorder', 'Order', 'Suborder', 'Infraorder', 'Parvorder'];
 }
 
 export function getFamilySorter(): string[] {

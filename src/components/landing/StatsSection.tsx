@@ -12,11 +12,7 @@ export default function StatsSection() {
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {STATS.map((stat) => (
-              <StatsCard
-                key={stat.label}
-                label={stat.label}
-                value={stat.value}
-              />
+              <StatsCard key={stat.label} label={stat.label} value={stat.value} />
             ))}
           </div>
         </div>

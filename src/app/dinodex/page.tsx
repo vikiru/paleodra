@@ -2,8 +2,7 @@ import { DinoDexContent } from '@/components/dinodex/DinoDexContent';
 
 export const metadata = {
   title: 'DinoDex | Paleodra',
-  description:
-    'Complete encyclopedia of all dinosaur species in our comprehensive database.',
+  description: 'Complete encyclopedia of all dinosaur species in our comprehensive database.',
 };
 
 export default function DinoDexPage() {

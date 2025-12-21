@@ -25,26 +25,20 @@ const searchOptions = {
   limit: 10,
 };
 
-export function createSearchIndex(
-  data: SearchIndex[],
-): Document<DocumentData, false, false> {
+export function createSearchIndex(data: SearchIndex[]): Document<DocumentData, false, false> {
   data.forEach((item: SearchIndex) => {
     document.add(item);
   });
   return document;
 }
 
-export function searchQuery(
-  document: Document<DocumentData, false, false>,
-  query: string,
-): SearchMatch[] {
+export function searchQuery(document: Document<DocumentData, false, false>, query: string): SearchMatch[] {
   const cleanQuery = query
     .replace(/[^\w\s]/gi, '')
     .trim()
     .toLowerCase();
   const searchResult = document.search(cleanQuery, searchOptions);
-  const matches =
-    (searchResult?.[0]?.result as SearchResult[] | undefined) ?? [];
+  const matches = (searchResult?.[0]?.result as SearchResult[] | undefined) ?? [];
 
   return matches.reduce<SearchMatch[]>((results, match) => {
     if (match.doc) {

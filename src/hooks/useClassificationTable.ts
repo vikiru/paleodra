@@ -24,18 +24,13 @@ type ClassificationTableData = {
   items: ClassificationItem[];
 };
 
-export function useClassificationTable(
-  classificationInfo: ClassificationInfo,
-): ClassificationTableData {
+export function useClassificationTable(classificationInfo: ClassificationInfo): ClassificationTableData {
   const items = useMemo(() => {
     const result: ClassificationItem[] = [];
 
     CLASSIFICATION_ORDER.forEach(({ key, label }) => {
       if (key === 'clade') {
-        if (
-          Array.isArray(classificationInfo.clade) &&
-          classificationInfo.clade.length > 0
-        ) {
+        if (Array.isArray(classificationInfo.clade) && classificationInfo.clade.length > 0) {
           classificationInfo.clade.forEach((cladeName) => {
             result.push({
               label: 'Clade',
@@ -43,12 +38,7 @@ export function useClassificationTable(
             });
           });
         }
-      } else if (
-        key === 'domain' ||
-        key === 'kingdom' ||
-        key === 'superphylum' ||
-        key === 'phylum'
-      ) {
+      } else if (key === 'domain' || key === 'kingdom' || key === 'superphylum' || key === 'phylum') {
         const data = classificationInfo[key];
         if (data) {
           result.push({
@@ -61,10 +51,7 @@ export function useClassificationTable(
         if (data && data.length > 0) {
           data.forEach((item) => {
             if (item?.value) {
-              const typeKey = key.replace('Info', 'Type') as keyof Omit<
-                typeof item,
-                'value'
-              >;
+              const typeKey = key.replace('Info', 'Type') as keyof Omit<typeof item, 'value'>;
               result.push({
                 label: item[typeKey] as string,
                 value: item.value,
