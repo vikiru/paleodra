@@ -30,10 +30,7 @@ export function ImageSection({ image }: ImageSectionProps) {
         <div className="space-y-3 p-6 text-sm text-gray-500 dark:text-gray-400">
           <div className="pt-2 text-sm">
             <p>
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
-                "{image?.title}"
-              </span>{' '}
-              by{' '}
+              <span className="font-semibold text-gray-700 dark:text-gray-300">"{image?.title}"</span> by{' '}
               {image?.authorURL ? (
                 <a
                   className="font-medium text-blue-600 hover:underline dark:text-blue-400"

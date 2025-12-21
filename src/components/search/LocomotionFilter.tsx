@@ -1,11 +1,5 @@
 import { memo } from 'react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 type LocomotionFilterProps = {
   value?: string;
@@ -14,13 +8,7 @@ type LocomotionFilterProps = {
   disabled?: boolean;
 };
 
-const LOCOMOTION_OPTIONS = [
-  'biped',
-  'quadruped',
-  'swimming',
-  'flying',
-  'gliding',
-];
+const LOCOMOTION_OPTIONS = ['biped', 'quadruped', 'swimming', 'flying', 'gliding'];
 
 export const LocomotionFilter = memo(function LocomotionFilter({
   value = '',

@@ -1,51 +1,29 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 
 import { cn } from '@/lib/utils/cn';
 
 function Table({ className, ...props }: React.ComponentProps<'table'>) {
   return (
-    <div
-      className="relative w-full overflow-x-auto"
-      data-slot="table-container"
-    >
-      <table
-        className={cn('w-full caption-bottom text-sm', className)}
-        data-slot="table"
-        {...props}
-      />
+    <div className="relative w-full overflow-x-auto" data-slot="table-container">
+      <table className={cn('w-full caption-bottom text-sm', className)} data-slot="table" {...props} />
     </div>
   );
 }
 
 function TableHeader({ className, ...props }: React.ComponentProps<'thead'>) {
-  return (
-    <thead
-      className={cn('[&_tr]:border-b', className)}
-      data-slot="table-header"
-      {...props}
-    />
-  );
+  return <thead className={cn('[&_tr]:border-b', className)} data-slot="table-header" {...props} />;
 }
 
 function TableBody({ className, ...props }: React.ComponentProps<'tbody'>) {
-  return (
-    <tbody
-      className={cn('[&_tr:last-child]:border-0', className)}
-      data-slot="table-body"
-      {...props}
-    />
-  );
+  return <tbody className={cn('[&_tr:last-child]:border-0', className)} data-slot="table-body" {...props} />;
 }
 
 function TableFooter({ className, ...props }: React.ComponentProps<'tfoot'>) {
   return (
     <tfoot
-      className={cn(
-        'bg-neutral-100/50 border-t font-medium [&>tr]:last:border-b-0 dark:bg-neutral-800/50',
-        className,
-      )}
+      className={cn('bg-neutral-100/50 border-t font-medium [&>tr]:last:border-b-0 dark:bg-neutral-800/50', className)}
       data-slot="table-footer"
       {...props}
     />
@@ -91,29 +69,14 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
   );
 }
 
-function TableCaption({
-  className,
-  ...props
-}: React.ComponentProps<'caption'>) {
+function TableCaption({ className, ...props }: React.ComponentProps<'caption'>) {
   return (
     <caption
-      className={cn(
-        'text-neutral-500 mt-4 text-sm dark:text-neutral-400',
-        className,
-      )}
+      className={cn('text-neutral-500 mt-4 text-sm dark:text-neutral-400', className)}
       data-slot="table-caption"
       {...props}
     />
   );
 }
 
-export {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-};
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };

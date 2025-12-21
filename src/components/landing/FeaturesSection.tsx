@@ -13,8 +13,7 @@ const FEATURES = [
   },
   {
     title: 'Search Dinosaurs',
-    description:
-      'Quickly find and explore any dinosaur species by name, diet, or locomotion',
+    description: 'Quickly find and explore any dinosaur species by name, diet, or locomotion',
     icon: '🔍',
   },
 ];
@@ -28,8 +27,8 @@ export default function FeaturesSection() {
             Explore the Age of Dinosaurs
           </h2>
           <p className="mb-12 text-lg text-oklch(var(--text)/0.8)">
-            From the mighty T-Rex to the gentle Brachiosaurus, discover the
-            incredible diversity of these ancient creatures.
+            From the mighty T-Rex to the gentle Brachiosaurus, discover the incredible diversity of these ancient
+            creatures.
           </p>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

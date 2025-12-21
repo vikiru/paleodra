@@ -23,9 +23,7 @@ export function useStaticSearch() {
       } catch (error) {
         console.warn('FlexSearch error, falling back to basic search:', error);
         const search = query.toLowerCase().trim();
-        return dinosaursData
-          .filter((dino) => dino.name.toLowerCase().includes(search))
-          .map((dino) => dino.id);
+        return dinosaursData.filter((dino) => dino.name.toLowerCase().includes(search)).map((dino) => dino.id);
       }
     };
   }, [searchIndex]);

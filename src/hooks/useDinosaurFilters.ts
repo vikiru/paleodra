@@ -27,15 +27,11 @@ export function useDinosaurFilters(): DinosaurFilterData {
       dinosaurIds = dinosaursData.map((dino: DinosaurMetadata) => dino.id);
     }
 
-    const filteredById = dinosaursData.filter((dino: DinosaurMetadata) =>
-      dinosaurIds.includes(dino.id),
-    );
+    const filteredById = dinosaursData.filter((dino: DinosaurMetadata) => dinosaurIds.includes(dino.id));
 
     return filteredById.filter((dino: DinosaurMetadata) => {
       const matchesDiet = dietFilter ? dino.diet === dietFilter : true;
-      const matchesLocomotion = locomotionFilter
-        ? dino.locomotionType === locomotionFilter
-        : true;
+      const matchesLocomotion = locomotionFilter ? dino.locomotionType === locomotionFilter : true;
       return matchesDiet && matchesLocomotion;
     });
   }, [searchQuery, diet, locomotion, searchDinosaur]);

@@ -29,9 +29,7 @@ export function DinoDexContent() {
 
         <DinoResultsInfo />
 
-        {filteredDinosaurs.length > 0 && (
-          <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />
-        )}
+        {filteredDinosaurs.length > 0 && <PaginatedDinoGrid dinosaurs={filteredDinosaurs} />}
       </div>
     </div>
   );

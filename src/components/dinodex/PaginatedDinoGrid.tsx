@@ -86,31 +86,20 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
       {totalPages > 1 && (
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-6">
           <div className="text-gray-500 text-sm dark:text-gray-400 whitespace-nowrap px-2 sm:px-0">
-            Showing {startIndex + 1}-{startIndex + currentItems.length} of{' '}
-            {dinosaurs.length} dinosaurs
+            Showing {startIndex + 1}-{startIndex + currentItems.length} of {dinosaurs.length} dinosaurs
           </div>
           <div className="overflow-x-auto" id="pagination-controls">
             <Pagination>
               <PaginationContent className="flex-wrap justify-center lg:justify-start">
                 <PaginationItem>
                   <PaginationPrevious
-                    className={
-                      isFirstPage
-                        ? 'pointer-events-none opacity-50'
-                        : 'cursor-pointer'
-                    }
+                    className={isFirstPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
                     onClick={handlePreviousPage}
                   />
                 </PaginationItem>
 
                 {paginationItems.map((value, index) => (
-                  <PaginationItem
-                    key={
-                      value === 'ellipsis'
-                        ? `ellipsis-${index}`
-                        : `page-${value}`
-                    }
-                  >
+                  <PaginationItem key={value === 'ellipsis' ? `ellipsis-${index}` : `page-${value}`}>
                     {value === 'ellipsis' ? (
                       <PaginationEllipsis />
                     ) : (
@@ -127,11 +116,7 @@ export const PaginatedDinoGrid = memo(function PaginatedDinoGrid({
 
                 <PaginationItem>
                   <PaginationNext
-                    className={
-                      isLastPage
-                        ? 'pointer-events-none opacity-50'
-                        : 'cursor-pointer'
-                    }
+                    className={isLastPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
                     onClick={handleNextPage}
                   />
                 </PaginationItem>

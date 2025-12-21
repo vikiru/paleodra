@@ -42,16 +42,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
-          href="/favicon-light.ico"
-          media="(prefers-color-scheme: light)"
-          rel="icon"
-        />
-        <link
-          href="/favicon-dark.ico"
-          media="(prefers-color-scheme: dark)"
-          rel="icon"
-        />
+        <link href="/favicon-light.ico" media="(prefers-color-scheme: light)" rel="icon" />
+        <link href="/favicon-dark.ico" media="(prefers-color-scheme: dark)" rel="icon" />
         <link
           href="/apple-touch-icon-light.png"
           media="(prefers-color-scheme: light)"

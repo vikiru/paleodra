@@ -24,11 +24,7 @@ export const SearchBar = memo(function SearchBar({
   showSuggestions = true,
   disabled = false,
 }: SearchBarProps) {
-  const {
-    suggestions,
-    showSuggestions: showLocalSuggestions,
-    hideSuggestions,
-  } = useSearchSuggestions();
+  const { suggestions, showSuggestions: showLocalSuggestions, hideSuggestions } = useSearchSuggestions();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -41,10 +37,7 @@ export const SearchBar = memo(function SearchBar({
   };
 
   return (
-    <section
-      className={`relative flex-1 max-w-3xl ${className}`}
-      id="search-bar"
-    >
+    <section className={`relative flex-1 max-w-3xl ${className}`} id="search-bar">
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <Search className="h-5 w-5 text-muted-foreground" />
       </div>

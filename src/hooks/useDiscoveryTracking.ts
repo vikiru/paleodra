@@ -24,8 +24,7 @@ export function useDiscoveryTracking(): DiscoveryTrackingData {
   }, [seenIds]);
 
   const undiscoveredCount = totalCount - discoveredCount;
-  const progressPercentage =
-    totalCount > 0 ? (discoveredCount / totalCount) * 100 : 0;
+  const progressPercentage = totalCount > 0 ? (discoveredCount / totalCount) * 100 : 0;
 
   const isDiscovered = (id: number): boolean => {
     return seenIds.has(id);

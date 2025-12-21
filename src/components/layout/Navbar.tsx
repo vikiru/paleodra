@@ -14,27 +14,18 @@ export function Navbar() {
   const { isOpen, toggleMenu, closeMenu } = useMobileNav();
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      disableTransitionOnChange
-    >
+    <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
       <header className="bg-background/85">
         <div className="w-full px-2 sm:px-4">
           <div className="flex h-16 items-center justify-between">
             <Logo />
-            <nav
-              aria-label="Main navigation"
-              className="hidden lg:flex items-center space-x-6 lg:space-x-8"
-            >
+            <nav aria-label="Main navigation" className="hidden lg:flex items-center space-x-6 lg:space-x-8">
               {/* Nav links */}
               {['Home', 'Explore', 'DinoDex'].map((name) => {
                 const href = name === 'Home' ? '/' : `/${name.toLowerCase()}`;
                 return (
                   <Link
-                    className={
-                      pathname === href ? 'gradient' : 'text-muted-foreground'
-                    }
+                    className={pathname === href ? 'gradient' : 'text-muted-foreground'}
                     href={href}
                     key={name.toLowerCase()}
                   >
@@ -53,11 +44,7 @@ export function Navbar() {
                 size="icon"
                 variant="ghost"
               >
-                {isOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>

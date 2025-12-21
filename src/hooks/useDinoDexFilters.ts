@@ -14,8 +14,7 @@ type DinoDexFilterData = {
 
 export function useDinoDexFilters(): DinoDexFilterData {
   const { seenIds } = useDinoStore();
-  const { filteredDinosaurs: baseFilteredDinosaurs, isLoading } =
-    useDinosaurFilters();
+  const { filteredDinosaurs: baseFilteredDinosaurs, isLoading } = useDinosaurFilters();
   const { searchQuery, diet, locomotion } = useSearchStore();
 
   const filteredDinosaurs = useMemo(() => {
@@ -25,15 +24,10 @@ export function useDinoDexFilters(): DinoDexFilterData {
     }));
   }, [baseFilteredDinosaurs, seenIds]);
 
-  const discoveredCount = filteredDinosaurs.filter(
-    (d) => !d.isUndiscovered,
-  ).length;
-  const undiscoveredCount = filteredDinosaurs.filter(
-    (d) => d.isUndiscovered,
-  ).length;
+  const discoveredCount = filteredDinosaurs.filter((d) => !d.isUndiscovered).length;
+  const undiscoveredCount = filteredDinosaurs.filter((d) => d.isUndiscovered).length;
 
-  const hasActiveFilters =
-    searchQuery !== '' || diet !== 'all' || locomotion !== 'all';
+  const hasActiveFilters = searchQuery !== '' || diet !== 'all' || locomotion !== 'all';
 
   return {
     filteredDinosaurs,

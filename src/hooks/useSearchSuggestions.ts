@@ -14,9 +14,7 @@ type SearchSuggestionData = {
   hideSuggestions: () => void;
 };
 
-export function useSearchSuggestions(
-  maxSuggestions: number = 5,
-): SearchSuggestionData {
+export function useSearchSuggestions(maxSuggestions: number = 5): SearchSuggestionData {
   const [query, setQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const { searchDinosaur } = useStaticSearch();

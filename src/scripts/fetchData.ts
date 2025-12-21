@@ -30,9 +30,7 @@ async function main() {
 
   if (mainDataFileExists && !indexesExist) {
     // Main dinosaur JSON exists, but other files (metadata and index do not) -> process and create them
-    console.log(
-      'Main dinosaur data file exists, but some index files are missing. Processing and creating now...',
-    );
+    console.log('Main dinosaur data file exists, but some index files are missing. Processing and creating now...');
     const dinosaurs = await readFile<Dinosaur[]>('dinosaurs.json');
     if (!dinosaurs) {
       console.error('Failed to read dinosaurs data');

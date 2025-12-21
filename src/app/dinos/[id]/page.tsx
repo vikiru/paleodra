@@ -9,11 +9,7 @@ import { ImageSection } from '@/components/dino-details/ImageSection';
 import { SourceSection } from '@/components/dino-details/SourceSection';
 import { Button } from '@/components/ui/button';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const { id } = await params;
   const dino = await getDinosaurData(id);
 

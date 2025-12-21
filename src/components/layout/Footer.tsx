@@ -12,8 +12,7 @@ export function Footer() {
           <div className="flex flex-col space-y-3">
             <Logo />
             <p className="text-muted-foreground text-sm sm:text-base">
-              Your gateway to the prehistoric world. Discover, learn, and
-              explore the fascinating age of dinosaurs.
+              Your gateway to the prehistoric world. Discover, learn, and explore the fascinating age of dinosaurs.
             </p>
           </div>
 
@@ -38,9 +37,7 @@ export function Footer() {
               </div>
 
               <div className="mt-2 lg:mt-0">
-                <h4 className="font-semibold text-foreground mb-2">
-                  Read More
-                </h4>
+                <h4 className="font-semibold text-foreground mb-2">Read More</h4>
                 <div className="space-y-2 flex flex-col items-start">
                   <a
                     className="text-muted-foreground hover:text-primary hover:underline transition-colors text-sm sm:text-base"
@@ -66,9 +63,8 @@ export function Footer() {
       <Separator orientation="horizontal" />
       <div className="container mx-auto px-2 sm:px-4 py-6">
         <p className="text-center text-xs sm:text-sm text-muted-foreground">
-          © {currentYear} Paleodra. All dinosaur info and images are sourced
-          directly from Wikipedia Articles and belong to their respective
-          authors. All dinosaur text is available under the{' '}
+          © {currentYear} Paleodra. All dinosaur info and images are sourced directly from Wikipedia Articles and belong
+          to their respective authors. All dinosaur text is available under the{' '}
           <a
             className="font-medium text-blue-600 hover:underline dark:text-blue-400"
             href="https://creativecommons.org/licenses/by-sa/4.0/"

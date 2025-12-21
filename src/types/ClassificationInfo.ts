@@ -1,11 +1,4 @@
-import type {
-  ClassInfo,
-  FamilyInfo,
-  GenusInfo,
-  OrderInfo,
-  SpeciesInfo,
-  TribeInfo,
-} from '@/types/Info';
+import type { ClassInfo, FamilyInfo, GenusInfo, OrderInfo, SpeciesInfo, TribeInfo } from '@/types/Info';
 
 export type ClassificationInfo = {
   domain: string;

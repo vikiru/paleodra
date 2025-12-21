@@ -10,8 +10,7 @@ export default function HeroSection() {
         </h1>
 
         <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl md:text-2xl">
-          Journey through time and explore the fascinating world of dinosaurs
-          with our comprehensive encyclopedia
+          Journey through time and explore the fascinating world of dinosaurs with our comprehensive encyclopedia
         </p>
 
         <div className="flex flex-col items-center justify-center">
